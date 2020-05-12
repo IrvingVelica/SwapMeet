@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,11 +32,14 @@
           <div class="col-lg-6 d-none d-lg-block" align="center">
               <br>
                 <br>
-                <br>  <br>            
+                <br>  <br>
+               
+            
             <img  src="img/SlogoMax.jpg">
             <div class="alert alert-success" role="alert" style="display: none;">Registro exitoso!!!</div>
+            <div class="alert alert-danger empty_fields" role="alert" style="display: none;">Hay campos vacios!!!</div>
+            <div class="alert alert-danger data_difference" role="alert" style="display: none;">Correo o contraseña no coinciden!!!</div>
           </div>
-
           <div class="col-lg-6">
             <div class="p-5">
               <div class="text-center">
@@ -64,36 +66,35 @@
                     <input type="text" class="form-control form-control-user user_address" id="tbx_direccion" placeholder="direccion..">
                   </div>
                 </div>
-
                 <div class="form-group">
                   <label for="exampleInputEmail1">Correo electronico</label>
-                  <input type="email" class="form-control form-control-user user_email" id="tbx_correo" placeholder="correo electronico..">
+                  <input type="email" class="form-control form-control-user user_email" id="tbx_correo" placeholder="correo..">
                 </div>
-                  <!--div class="form-group">
-                  <input type="email" class="form-control form-control-user use" id="tbx_correo_confir" placeholder="confirmar correo..">
-                
-                   </div-->
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Confirme su correo electronico</label>
+                  <input type="email" class="form-control form-control-user confirm_user_email" id="tbx_correo_confir" placeholder="confirmar correo..">   
+              </div>
                 <div class="form-group row">
-                  <div class="col-sm-12 mb-3 mb-sm-0">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
                     <label for="exampleInputEmail1">Contraseña</label>
-                    <input type="password" class="form-control form-control-user user_password" id="tbx_clave" placeholder="Contraseña...">
+                    <input type="password" class="form-control form-control-user user_password" id="tbx_clave" placeholder="clave...">
                   </div>
-                  <!--div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="tbx_clave_confir" placeholder="confirmar clave...">
-                  </div-->
+                  <div class="col-sm-6">
+                  <label for="exampleInputEmail1">Confirme su contraseña</label>
+                    <input type="password" class="form-control form-control-user confirm_user_password" id="tbx_clave_confir" placeholder="confirmar clave...">
+                  </div>
                 </div>
-                <button class="btn btn-primary btn-user btn-block save_user">
+                 <button class="btn btn-primary btn-user btn-block">
                   Registrar
                 </button>
-                <div class="alert alert-danger" role="alert" style="display: none;">Hay campos faltantes!!!</div>
-                
                 <hr>
+              </form>
               <hr>
               <div class="text-center">
                 <a class="small" href="#">Recuperar Contraseña</a>
               </div>
               <div class="text-center">
-                <a class="small" href="#">Iniciar Sesion!</a>
+                <a class="small" href="login.html">Iniciar Sesion!</a>
               </div>
             </div>
           </div>
@@ -138,6 +139,7 @@
 </html>
 
 
+
 <script>
 
 $('#addUser').submit(function(e){
@@ -149,17 +151,25 @@ $('#addUser').submit(function(e){
     var user_email = $('.user_email').val();
     var user_address = $('.user_address').val();
     var user_password = $('.user_password').val();
+    var confirm_user_email = $('.confirm_user_email').val();
+    var confirm_user_password = $('.confirm_user_password').val();
 
 
 
-    if (user_name && user_lastname  && user_age && user_email && user_address && user_password) {
-        var objUser = {
+
+    if (user_name && user_lastname  && user_age && user_email && user_address && user_password && confirm_user_email && confirm_user_password) {
+      if(user_email!=confirm_user_email||user_password!=confirm_user_password){
+        $('.data_difference').show();
+        $('.data_difference').fadeOut(5000);
+      }else{
+            var objUser = {
             'user_name':user_name,
             'user_lastname': user_lastname,
             'user_age': user_age,
-            'user_email': user_email,
             'user_address': user_address,
+            'user_email': user_email,            
             'user_password': user_password,
+            'actions':'insert'
         };
 
         $.post('users_engine.php', objUser, function(respuesta) {
@@ -172,6 +182,8 @@ $('#addUser').submit(function(e){
 
             } 
         });
+      }
+    
 
     } else {
 
@@ -196,8 +208,8 @@ $('#addUser').submit(function(e){
             $('.user_password').css("border","1px solid red");
         }
 
-        $('.alert-danger').show();
-        $('.alert-danger').fadeOut(5000); 
+        $('.empty_fields').show();
+        $('.empty_fields').fadeOut(5000); 
     }
 }); 
 
