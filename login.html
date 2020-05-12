@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Swapmeet</title>
+
+  <!-- Custom fonts for this template-->
+ <link href="css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-gradient-danger">
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+          <div class="card-body p-0">
+            <!-- Nested Row within Card Body -->
+            <div class="row">
+              <div class="col-lg-6">
+                <br>
+                <br>
+                <br>
+                <img align="center" src="img/login.png">
+                <div class="alert alert-danger empty_fields" role="alert" style="display: none;">Hay campos vacios!!!</div>
+                <div class="alert alert-success" role="alert" style="display: none;">Usuario encontrado!!!</div>
+                <div id="no" class="alert alert-danger not_found" role="alert" style="display: none;">Usuario no encontrado</div>
+              </div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">BIENVENIDO</h1>
+                  </div>
+                  <form id="userLog" class="user">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Correo electronico</label>
+                      <input type="email" class="form-control form-control-user email_log" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Correo...">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Contraseña</label>
+                      <input type="password" class="form-control form-control-user password_log" id="exampleInputPassword" placeholder="Contraseña...">
+                    </div>
+                    <button href="#" class="btn btn-primary btn-user btn-block">Iniciar session</button>
+                    <hr>
+                  </form>
+                  <hr>
+                  <div class="text-center">
+                    <a class="small" href="#">Recuperar Contraseña</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="users_register.php">Crear cuenta!</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+  <br>
+  <br>
+<!-- Footer -->
+      <footer class="sticky-footer bg-danger">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Swapmeet 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+  <!-- Bootstrap core JavaScript-->
+  <<!-- Bootstrap core JavaScript-->
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="js/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="js/Chart.min.js"></script>
+  <script type="text/javascript" src="js/all.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>
+
+
+
+<script>
+
+$('#userLog').submit(function(e){
+    e.preventDefault();
+
+    var email_log = $('.email_log').val();
+    var password_log =  $('.password_log').val();
+    //debugger;
+
+    if ( email_log && password_log ) {
+        var objUserLog = {
+            'email_log':email_log,
+            'password_log': password_log,
+            'actions': 'login'
+        };
+
+        $.post('users_engine.php', objUserLog, function(respuesta) { 
+            if(respuesta==2) {
+                $('.not_found').show();//NO SE ENCONTRO USUARIO
+                 $('.not_found').fadeOut(5000);
+                 
+              } else{
+                      window.location.href="index.html";
+                      //console.log(respuesta);
+                      // $('.alert-success').show();
+                      //$('.alert-success').fadeOut(5000); 
+                      
+              }
+        });
+
+    } else {
+
+        if (!email_log) {
+            $('.email_log').css("border","1px solid red");
+        }
+
+        if (!password_log) {
+            $('.password_log').css("border","1px solid red");
+        }
+
+        $('.empty_fields').show();//FALTAN CAMPOS POR LLENAR
+        $('.empty_fields').fadeOut(5000); 
+    }
+}); 
+
+$('.email_log, .password_log').focusout(function(){
+    $(this).css("border","1px solid #d1d3e2");
+});    
+</script>
