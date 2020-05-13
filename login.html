@@ -37,7 +37,7 @@
                 <br>
                 <br>
                 <br>
-                <div align="center" ">
+                <div align="center" >
                 <img  src="img/login.png" class="img-fluid" alt="Responsive image">
                </div>
                 <div class="alert alert-danger empty_fields" role="alert" style="display: none;">Hay campos vacios!!!</div>
@@ -140,11 +140,10 @@ $('#userLog').submit(function(e){
                  $('.not_found').fadeOut(5000);
                  
               } else{
-                      window.location.href="index.html";
-                      //console.log(respuesta);
-                      // $('.alert-success').show();
-                      //$('.alert-success').fadeOut(5000); 
-                      
+                      respuesta = JSON.parse(respuesta);
+                      //document.cookie = "user_id="+respuesta.user_id+"; max-age=3600; path=/";
+                     // sessionStorage.setItem("user_id",respuesta.user_id);
+                      window.location.href="index.php";         
               }
         });
 
