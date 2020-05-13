@@ -30,6 +30,8 @@ if($actions == 'login'){
 	$row=mysqli_fetch_assoc($execute);
 
 	if(mysqli_num_rows($execute)){
+		session_start();
+        $_SESSION["user_id"] = $row['user_id'];
 		echo json_encode($row);
 	}else{
 		echo json_encode(2);
