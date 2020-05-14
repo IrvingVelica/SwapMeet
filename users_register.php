@@ -158,7 +158,7 @@ $('#addUser').submit(function(e){
 
 
     if (user_name && user_lastname  && user_age && user_email && user_address && user_password && confirm_user_email && confirm_user_password) {
-      if(user_email!=confirm_user_email||user_password!=confirm_user_password){
+       if(user_email!=confirm_user_email||user_password!=confirm_user_password){
         $('.data_difference').show();
         $('.data_difference').fadeOut(5000);
       }else{
@@ -217,3 +217,6 @@ $('.user_name, .user_lastname, user_age, .user_email, user_address, user_passwor
     $(this).css("border","1px solid #d1d3e2");
 });    
 </script>
+
+
+

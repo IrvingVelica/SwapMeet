@@ -128,8 +128,8 @@ include("conexiondb.php");
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Visita tu perfil</a>
-                        <a class="dropdown-item" href="register_product.html">Vende o cambia un articulo</a>
-                        <a class="dropdown-item" href="cerrarsesion.php">Cerrar Session</a>
+                        <a class="dropdown-item" href="product_register.html">Vende o cambia un articulo</a>
+                        <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
                 </li>
             <?php } else { ?>
@@ -142,7 +142,7 @@ include("conexiondb.php");
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="login.html">Iniciar session</a>
+                        <a class="dropdown-item" href="login.html">Iniciar sesión</a>
                         <a class="dropdown-item" href="users_register.php">Registrate</a>
                     </div>
                 </li>
@@ -173,7 +173,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="product_details.php"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -192,7 +192,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -211,7 +211,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -230,7 +230,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -249,7 +249,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -268,7 +268,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -294,7 +294,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -313,7 +313,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -332,7 +332,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -351,7 +351,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -370,7 +370,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
@@ -389,7 +389,7 @@ include("conexiondb.php");
                   
                   <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
                   </div>
-                  <a target="_blank" rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
                   <label>Cambio</label>
                 
                 </div>
