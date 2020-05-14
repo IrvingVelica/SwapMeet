@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-05-2020 a las 07:08:32
+-- Tiempo de generación: 13-05-2020 a las 23:43:20
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -41,12 +41,18 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `products_data` (
   `product_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
+  `description_product` varchar(50) NOT NULL,
+  `description_change` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
-  `price` varchar(50) NOT NULL,
+  `price_sale` varchar(50) NOT NULL,
+  `price_rental` varchar(20) NOT NULL,
   `img` varchar(50) NOT NULL,
+  `time_rental` varchar(20) NOT NULL,
   `sale_type` varchar(50) NOT NULL,
-  `category_id` int(11) NOT NULL
+  `category_product` varchar(20) NOT NULL,
+  `category_change` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -72,10 +78,22 @@ CREATE TABLE `users_data` (
   `user_id` int(11) NOT NULL,
   `first_name` varchar(50) NOT NULL,
   `last_name` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `age` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `address` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `users_data`
+--
+
+INSERT INTO `users_data` (`user_id`, `first_name`, `last_name`, `password`, `age`, `email`, `address`) VALUES
+(46, 'david', 'moeles', 'x', 45, 'dmorales1@uabc.edu.mx', 'casa'),
+(52, 'david', 'morales', '123', 2, 'Ylinares1@uabc.edu.mx', 'casa'),
+(53, 'david', 'morales', '123', 2, 'Ylinares1@uabc.edu.mx', 'casa'),
+(54, 'david', 'moeles', '123', 45, 'linares1@uabc.edu.mx', 'casa'),
+(55, 'david', 'moeles', '123', 45, 'linares1@uabc.edu.mx', 'casa');
 
 --
 -- Índices para tablas volcadas
@@ -131,7 +149,7 @@ ALTER TABLE `request_sale`
 -- AUTO_INCREMENT de la tabla `users_data`
 --
 ALTER TABLE `users_data`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
