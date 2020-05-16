@@ -99,7 +99,7 @@ include("conexiondb.php");
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Visita tu perfil</a>
-                        <a class="dropdown-item" href="product_register.html">Vende o cambia un articulo</a>
+                        <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
                 </li>
@@ -382,7 +382,7 @@ include("conexiondb.php");
       <footer class="sticky-footer bg-danger">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Swapmeet2020</span>
+            <span>Swapmeet 2020</span>
           </div>
         </div>
       </footer>

@@ -9,7 +9,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Swapmeet</title>
+  <title>swapmeet</title>
 
   <!-- Custom fonts for this template-->
 <link href="css/all.min.css" rel="stylesheet" type="text/css">
@@ -87,9 +87,11 @@
                  <button class="btn btn-primary btn-user btn-block">
                   Registrar
                 </button>
-                <button href="#" class="btn btn-secondary btn-user btn-block">Regresar</button>
                 <hr>
               </form>
+              <a href="index.php">
+                <button class="btn btn-secondary btn-user btn-block">Regresar</button>
+              </a>
               <hr>
               <div class="text-center">
                 <a class="small" href="#">Recuperar Contraseña</a>
