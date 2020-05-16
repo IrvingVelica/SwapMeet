@@ -9,10 +9,11 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>swapmeet</title>
+  <title>SWAPMEET</title>
 
   <!-- Custom fonts for this template-->
-  <link href="css/all.min.css" rel="stylesheet" type="text/css">
+  
+ <link href="css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -20,11 +21,103 @@
 
 </head>
 
-<body class="bg-gradient-danger">
+<body id="page-top">
+ 
+  
 
-  <div class="container">
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
-    <div class="card o-hidden border-0 shadow-lg my-5">
+      <!-- Main Content -->
+      <div id="content">
+
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+          <img src="img/Slogo_b.png" style="border-radius: 35px;" >
+
+         
+
+          <!-- Topbar Search -->
+          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="button">
+                  <i class="fas fa-search fa-sm"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
+
+          
+
+            <!-- boton categorias -->
+             <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Categorias</button>
+                <!-- Counter - Alerts -->
+               
+              </a>
+              <!-- Dropdown - Alerts -->
+         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Herramientas</a>
+                        <a class="dropdown-item" href="product_register.html">Electronicos</a>
+                        <a class="dropdown-item" href="cerrarsesion.php">Ropa</a>
+                         <a class="dropdown-item" href="#">Alimentos</a>
+                        <a class="dropdown-item" href="product_register.html">Muebles</a>
+                       
+                    </div>
+            </li>
+
+            <!-- boton mis arituclos -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
+               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+              </a>
+              
+            </li>
+            <!-- boton mis ofrecer -->
+              <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dr" href="#"">
+               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ventas</button>
+              </a>
+            </li>
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+
+            <!-- Nav Item - User Information -->
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><label>NombreUsername</label></span>
+                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="login.html">
+                  
+                  Iniciar sesion
+                </a>
+                <a class="dropdown-item" href="register.html">
+                  
+                  Registrerse
+                </a>
+              </div>
+            </li>
+
+          </ul>
+
+        </nav>
+        <!-- End of Topbar -->
+
+        <!-- Begin Page Content -->
+      
+
+
+           <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row">
@@ -43,24 +136,24 @@
               <form class="user" id="AddProduct">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                  	<label >Nombre del Articulo</label>
+                    <label >Nombre del Articulo</label>
                     <input type="text" class="form-control form-control-registro product_name" id="tbx_nombre" placeholder="nombre">
                   </div>
 
                   <div class="col-sm-6">
-                  	<div class="form-group">
- 					 <label>Seleccione Categoria</label>
-					  <select class="form-control form-control-registro category_procduct" id="tbx_selec_categori ">
-   						 <option>Herramientas</option>
-   						 <option>Electronicos</option>
-    					 <option>Ropa</option>
-    					 <option>Alimentos</option>
-    					 <option>Renta</option>
-    					 <option>Muebles</option>
-    					 <option>espeficicar</option>
-    					 <option>mas..</option>
-  					</select>
-					</div>
+                    <div class="form-group">
+           <label>Seleccione Categoria</label>
+            <select class="form-control form-control-registro category_procduct" id="tbx_selec_categori ">
+               <option>Herramientas</option>
+               <option>Electronicos</option>
+               <option>Ropa</option>
+               <option>Alimentos</option>
+               <option>Renta</option>
+               <option>Muebles</option>
+               <option>espeficicar</option>
+               <option>mas..</option>
+            </select>
+          </div>
                     
                   </div>
 
@@ -68,32 +161,32 @@
               
 
                 <div class="form-group">
- 					 <label>Seleccione estado</label>
-					  <select class="form-control form-control-registro product_status" id="tbx_selec_estado">
-   						 <option>Nuevo</option>
-   						 <option>Semi nuevo</option>
-    					 <option>Usado</option>
-  					</select>
-					</div>
+           <label>Seleccione estado</label>
+            <select class="form-control form-control-registro product_status" id="tbx_selec_estado">
+               <option>Nuevo</option>
+               <option>Semi nuevo</option>
+               <option>Usado</option>
+            </select>
+          </div>
                   <div class="form-group">
-                  	<label>Descripcion del Articulo</label>
+                    <label>Descripcion del Articulo</label>
                   <input type="description" class="form-control form-control-registro description_product" id="tbx_descripcion" placeholder="descripcion...." style="padding: 2rem 1rem;">
                 
               </div>
 
 
               <div class="form-group">
-     		 <label >Subir Imagen</label>
-     		 <div class="input-group mb-2">
-      		  <div class="input-group-prepend">
-         	 <div class="input-group-text">	<a href="#" style="color:#4A4949;">
-				<i class="fa fa-fw fa-image"></i>
+         <label >Subir Imagen</label>
+         <div class="input-group mb-2">
+            <div class="input-group-prepend">
+           <div class="input-group-text"> <a href="#" style="color:#4A4949;">
+        <i class="fa fa-fw fa-image"></i>
       </a>
       </div>
-       			 </div>
-        		<input type="text" class="form-control" id="tbx_img" placeholder="C://Imga">
-      			</div>
-   				 </div>
+             </div>
+            <input type="text" class="form-control" id="tbx_img" placeholder="C://Imga">
+            </div>
+           </div>
            <div class="form-group">
            <label>Tipo de venta</label>
             <select class="form-control form-control-registro " id="tbx_selec_estado" ">
@@ -106,41 +199,41 @@
 
                <div class="form-group row">
                   <div class="col-sm-4">
-    					<label class="form-check-label" for="exampleCheck1">Venta</label>
-    					<label >Precio</label>
+              <label class="form-check-label" for="exampleCheck1">Venta</label>
+              <label >Precio</label>
                     <input type="text" class="form-control" id="tbx_precio" placeholder="precio">
- 					 
+           
                   </div>
                   <div class="col-sm-4">
                    
-    					<label class="form-check-label" for="exampleCheck1">Intercambio</label>
-    					<br>
+              <label class="form-check-label" for="exampleCheck1">Intercambio</label>
+              <br>
 
-    					 <select  type="text" class="form-control form-control-registro" id="tbx_selec_categori">
-   						 <option>Herramientas</option>
-   						 <option>Electronicos</option>
-    					 <option>Ropa</option>
-    					 <option>Alimentos</option>
-    					 <option>Muebles</option>
-    					 <option>espeficicar</option>
-    					
-  					</select>
-				  
-				   <div class="form-group">
-                  	<label>Descripcion del Articulo</label>
+               <select  type="text" class="form-control form-control-registro" id="tbx_selec_categori">
+               <option>Herramientas</option>
+               <option>Electronicos</option>
+               <option>Ropa</option>
+               <option>Alimentos</option>
+               <option>Muebles</option>
+               <option>espeficicar</option>
+              
+            </select>
+          
+           <div class="form-group">
+                    <label>Descripcion del Articulo</label>
                   <input type="description" class="form-control form-control-registro" id="tbx_descripcion_inter" placeholder="descripcion...." style="padding: 2rem 1rem;">
                 
-             	 </div>
+               </div>
                   </div>
                   <div class="col-sm-4">
                     
-    				
-    					<label class="form-check-label" for="exampleCheck1">Renta</label>
-    						<label >Precio</label>
+            
+              <label class="form-check-label" for="exampleCheck1">Renta</label>
+                <label >Precio</label>
                     <input type="text" class="form-control" id="tbx_precio_renta" placeholder="precio por renta">
-                    	<label >Tiempo</label>
+                      <label >Tiempo</label>
                     <input type="text" class="form-control" id="tbx_tiempo" placeholder="tiempo de renta">
-  					
+            
                   </div>
                 </div>
 
@@ -158,22 +251,61 @@
         </div>
       </div>
     </div>
+          <!--  end gallery -->
+          
+            
+            
+  
 
-  </div>
+        
+       </div>   
+        <!-- /.container-fluid -->
 
-  <br>
-  <br>
-<!-- Footer -->
+      
+    </div>
+
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
       <footer class="sticky-footer bg-danger">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Swapmeet2020</span>
+            <span>08/05/2020© Copyright</span>
           </div>
         </div>
       </footer>
       <!-- End of Footer -->
 
-  <!-- Bootstrap core JavaScript-->
+    
+    <!-- End of Content Wrapper -->
+
+ 
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+ <!-- Logout Debes iniciar secion para ofrecer articulo-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Bienvenido</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Iniciar sesion primero</div>
+        <div class="modal-footer">
+        
+          <a class="btn btn-secondary" href="login.html">Iniciar sesion</a>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+<!-- Bootstrap core JavaScript-->
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
 
@@ -190,6 +322,7 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+  
 
 </body>
 

@@ -56,44 +56,15 @@ include("conexiondb.php");
                
               </a>
               <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div>
-                    <div class="small text-gray-500">Herramientas</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div>
-                    <div class="small text-gray-500">Electronicos</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div>
-                    <div class="small text-gray-500">Ropa</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div>
-                    <div class="small text-gray-500">Alimentos</div>
-                  </div>
-                </a>
-                 <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div>
-                    <div class="small text-gray-500">Renta</div>
-                  </div>
-                </a>
-               
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div>
-                    <div class="small text-gray-500">Muebles</div>
-                  </div>
-                </a>
-               
-               
-                
-                
-              </div>
+             
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">Herramientas</a>
+                        <a class="dropdown-item" href="product_register.html">Electronicos</a>
+                        <a class="dropdown-item" href="cerrarsesion.php">Ropa</a>
+                         <a class="dropdown-item" href="#">Alimentos</a>
+                        <a class="dropdown-item" href="product_register.html">Muebles</a>
+                       
+                    </div>
             </li>
 
             <!-- boton mis arituclos -->
