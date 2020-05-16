@@ -87,6 +87,7 @@
                  <button class="btn btn-primary btn-user btn-block">
                   Registrar
                 </button>
+                <button href="#" class="btn btn-secondary btn-user btn-block">Regresar</button>
                 <hr>
               </form>
               <hr>
