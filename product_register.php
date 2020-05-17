@@ -159,7 +159,7 @@ include("conexiondb.php");
                   <div class="col-sm-6">
                       <div class="form-group">
                           <label>Seleccione Categoria</label>
-                          <select class="form-control form-control-registro" name="category_product" id="tbx_selec_categori ">
+                          <select class="form-control form-control-registro" name="product_category" id="product_category ">
                               <option>Herramientas</option>
                               <option>Electronicos</option>
                               <option>Ropa</option>
@@ -182,7 +182,7 @@ include("conexiondb.php");
                 
                 <div class="form-group">
                     <label>Descripcion del Articulo</label>
-                    <input type="description" class="form-control form-control-registro " name="description_product" id="tbx_descripcion" placeholder="descripcion...." style="padding: 2rem 1rem;">
+                    <input type="description" class="form-control form-control-registro " name="product_description" id="tbx_descripcion" placeholder="descripcion...." style="padding: 2rem 1rem;">
                 </div>
 
                 <div class="form-group">
@@ -201,7 +201,7 @@ include("conexiondb.php");
            
                 <div class="form-group">
                     <label>Tipo de venta</label>
-                    <select class="form-control form-control-registro" name="type_sale" id="tbx_selec_estado">
+                    <select class="form-control form-control-registro" name="sale_type" id="tbx_selec_estado">
                         <option>Venta</option>
                         <option>Intercambio</option>
                         <option>Renta</option>
@@ -219,7 +219,7 @@ include("conexiondb.php");
                         <label class="form-check-label" for="exampleCheck1">Intercambio</label>
                         <br>
 
-                        <select  type="text" class="form-control form-control-registro" name="category_change" id="tbx_selec_categori">
+                        <select  type="text" class="form-control form-control-registro" name="change_category" id="tbx_selec_categori">
                             <option>Herramientas</option>
                             <option>Electronicos</option>
                             <option>Ropa</option>
@@ -230,7 +230,7 @@ include("conexiondb.php");
           
                         <div class="form-group">
                             <label>Descripcion del Articulo</label>
-                            <input type="description" class="form-control form-control-registro" name="description_change" id="tbx_descripcion_inter" placeholder="descripcion...." style="padding: 2rem 1rem;">
+                            <input type="description" class="form-control form-control-registro" name="change_description" id="tbx_descripcion_inter" placeholder="descripcion...." style="padding: 2rem 1rem;">
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -306,14 +306,13 @@ include("conexiondb.php");
 </html>
 
 
- 
-
-<script>
+<script> 
+          
 $('#addProduct').submit(function(e){
     e.preventDefault();
     var formData = new FormData(document.getElementById('addProduct')); 
     $.ajax({
-        url: 'products_engine', 
+        url: 'products_engine.php', 
         type: "post", 
         dataType: "html", 
         data: formData, cache: false,
@@ -321,7 +320,7 @@ $('#addProduct').submit(function(e){
         processData: false 
     })
     .done(function(res){ 
-        console.log(res) 
+        console.log(res) ;
     });
 });
 </script>
