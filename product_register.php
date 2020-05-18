@@ -138,7 +138,10 @@ include("conexiondb.php");
              
             <div align="center">
                 <img  src="img/SlogoMax.jpg" class="img-fluid" alt="Responsive image">
-               </div>
+            </div>
+            <div><br><br><br><br><br><br><br><br></div>
+
+               <div class="alert alert-success" role="alert" style="display: none;">Registro exitoso!!!</div>
           </div>
           <div class="col-lg-8">
             <div class="p-5">
@@ -186,6 +189,7 @@ include("conexiondb.php");
                 </div>
 
                 <div class="form-group">
+                  <div id="preview"></div>
                     <label >Subir Imagen</label>
                     <div class="input-group mb-2">
                         <div class="input-group-prepend">
@@ -195,17 +199,18 @@ include("conexiondb.php");
                                 </a>
                             </div>
                         </div>
-                        <input type="file" class="form-control" name="file" id="tbx_img" placeholder="C://Imga">
+                        <input type="file" class="form-control" name="file" id="file" placeholder="C://Imga">
                     </div>
                 </div>
            
                 <div class="form-group">
                     <label>Tipo de venta</label>
-                    <select class="form-control form-control-registro" name="sale_type" id="tbx_selec_estado">
+                    <select class="form-control form-control-registro sale_type" name="sale_type" id="sale_type">
+                        <option selected value="">Selecciona de la lista</option>
                         <option>Venta</option>
                         <option>Intercambio</option>
                         <option>Renta</option>
-                        <option>Venta/intercambio</option>
+                        <option>Venta/Intercambio</option>
                     </select>
                 </div>
 
@@ -219,7 +224,7 @@ include("conexiondb.php");
                         <label class="form-check-label" for="exampleCheck1">Intercambio</label>
                         <br>
 
-                        <select  type="text" class="form-control form-control-registro" name="change_category" id="tbx_selec_categori">
+                        <select  type="text" class="form-control form-control-registro change_category" name="change_category" id="change_category">
                             <option>Herramientas</option>
                             <option>Electronicos</option>
                             <option>Ropa</option>
@@ -239,6 +244,7 @@ include("conexiondb.php");
                         <input type="text" class="form-control" name="price_rental" id="tbx_precio_renta" placeholder="precio por renta">
                         <label >Tiempo</label>
                         <input type="text" class="form-control" name="time_rental" id="tbx_tiempo" placeholder="tiempo de renta">
+                        <input type="hidden" class="form-control" name="user_id" value="<?=$_SESSION['user_id'];?>">
                     </div>
                 </div>
                 <input type="submit" class="btn btn-primary btn-user btn-block" value="Registrar">               
@@ -307,6 +313,29 @@ include("conexiondb.php");
 
 
 <script> 
+        document.getElementById("file").onchange = function(e) { let reader = new FileReader(); 
+          reader.readAsDataURL(e.target.files[0]);
+          reader.onload = function(){ 
+            let preview = document.getElementById('preview'), image = document.createElement('img'); 
+          image.src = reader.result; preview.innerHTML = ''; preview.append(image); 
+        }; 
+      }
+
+
+
+
+
+
+
+    $('#sale_type').change(function(){
+        var sale_type = $(this).val();
+        if(sale_type == 'Venta'||sale_type == 'Renta'){
+          $('#change_category').attr('disabled',true);
+        }else{
+          $('#change_category').attr('disabled',false);
+        }
+    });
+ 
           
 $('#addProduct').submit(function(e){
     e.preventDefault();
@@ -319,8 +348,13 @@ $('#addProduct').submit(function(e){
         contentType: false,
         processData: false 
     })
-    .done(function(res){ 
+    .done(function(res){
+    if(res==1){
+      $('.alert-success').show();
+      $('.alert-success').fadeOut(5000);
         console.log(res) ;
+    } 
+      
     });
 });
 </script>

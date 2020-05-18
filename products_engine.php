@@ -10,16 +10,32 @@ $time_rental = $_POST['time_rental'];
 $sale_type = $_POST['sale_type'];
 $product_category=$_POST['product_category'];
 $change_category = $_POST['change_category'];
-$img = $_FILES['file']['tmp_name'];
-
-//print_r($_POST);
-//print_r($_FILES);
+$user_id = $_POST['user_id'];
+$img = '';
 
 
-//inserytar usuario
+$uploadFolder = 'products';
+$temp_name = $_FILES["file"]["tmp_name"];
+$nameSeed = rand(1,1000000); 
+$name = strtolower(str_replace(array(':', '', '/', '*', '[', ']', '(', ')', '{', '}', ' '), '',$nameSeed.$_FILES["file"]["name"]));
+if (!file_exists($uploadFolder)) { mkdir($uploadFolder, 0777);
+  chmod($uploadFolder, 0777); 
+  } move_uploaded_file($temp_name, "$uploadFolder/$name"); 
+  chmod("$uploadFolder/$name", 0777);
+
+  if($_FILES["file"]["name"]){
+  	 $img = $uploadFolder.'/'.$name;
+  }
+
+
 
 $sql_request = 'INSERT INTO products_data (product_id,user_id, name, product_description, change_description, status, price_sale, price_rental, img, time_rental, sale_type, product_category, change_category) 
-	VALUES(NULL, NULL,"'.$product_name.'", "'.$product_description.'", "'.$change_description.'","'.$status.'","'.$price_sale.'","'.$price_rental.'","'.$img.'","'.$time_rental.'","'.$sale_type.'","'.$product_category.'","'.$change_category.'")';
-	mysqli_query($conexion, $sql_request);
+	VALUES(NULL, "'.$user_id.'","'.$product_name.'", "'.$product_description.'", "'.$change_description.'","'.$status.'","'.$price_sale.'","'.$price_rental.'","'.$img.'","'.$time_rental.'","'.$sale_type.'","'.$product_category.'","'.$change_category.'")';
+
+	if(mysqli_query($conexion, $sql_request)){
+		echo json_encode(1);
+	}else{
+		echo json_encode(2);
+	}
 
 ?>
