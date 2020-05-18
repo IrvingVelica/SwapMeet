@@ -170,14 +170,11 @@ include("conexiondb.php");
               <div class="card shadow mb-3 text-center">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">
-                  <label id="lbl_nombre_arti">Nombre del articulo</label>
+                  <label id="lbl_precio">$$Precio</label>
                 </h6>
                 </div>
                 <div class="card-body">
                   <div class="text-center">
-                  	 <label id="lbl_precio">$$Precio</label>
-                
-                  
                   <p>
                   	<label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!
                   	</label>
@@ -197,7 +194,7 @@ include("conexiondb.php");
            <div class="card shadow mb-3 text-center">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">
-                  	<label id="id_name_inter">Nombre del articulo a intercambiar
+                  	<label id="lbl_categoria">Categoria
                   	</label>
                   </h6>
                 </div>
@@ -207,7 +204,7 @@ include("conexiondb.php");
                   
                   <p><label>aqui ira la descripcion del articulo y la opcionde intercambiar cuando actie el vendedor</label></p>
                   </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" onclick="not_session2()" style="border-radius: 25px;">Cambio</button></a>
+                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" onclick="not_session2()" style="border-radius: 25px;">Intercambio</button></a>
                   <a href="#">
                   
                 </a>
