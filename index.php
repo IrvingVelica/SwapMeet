@@ -1,5 +1,9 @@
+ <?php
+    session_start();
+ ?>
 <?php
 include("conexiondb.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,9 +21,7 @@ include("conexiondb.php");
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <?php
-    session_start();
-    ?>
+   
 </head>
 
 <body id="page-top">
@@ -125,251 +127,38 @@ include("conexiondb.php");
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
+          <?php
+              $geProductQuery = "SELECT * FROM products_data";
+              $getProduct = mysqli_query($conexion,  $geProductQuery);                                     
+            ?>
   
-
           <!-- Content Row -->
           <div class="row">
-
+            <?php while ($rowProduct =  mysqli_fetch_assoc($getProduct)) {?>      
             <div class="col-lg-2 ">
-
               <!-- Illustrations -->
               <div class="card shadow mb-3 text-center">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
+                  <h6 class="m-0 font-weight-bold text-primary"><?php echo $rowProduct['name'];?></h6>
                 </div>
                 <div class="card-body">
                   <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
+                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="<?php echo $rowProduct['img'];?>" alt="">                
+                  <p><label><?php echo $rowProduct['product_description'];?></label></p>
                   </div>
-                  <a rel="nofollow" href="product_details.php"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
+                  <a href="product_details.php?product_id=<?php echo $rowProduct['product_id'];?>" type="button" class="btn btn-secondary btn-sm" style="border-radius 25px;">Detalles</a>    
+                  <label><?php echo $rowProduct['sale_type'];?></label>
                 </div>
               </div>
             </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
+            <?php } ?>
+         
             </div>
             
 
           </div>
 
            <!-- Content Row -->
-          <div class="row">
-
-            <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-             <div class="col-lg-2 ">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">NOMBRE</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="img/imagen.png" alt="">
-                  
-                  <p><label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;">Detalles</button></a>
-                  <label>Cambio</label>
-                
-                </div>
-              </div>
-            </div>
-            
-
-          </div>
-             
         
           
         <!-- /.container-fluid -->

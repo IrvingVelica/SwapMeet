@@ -218,7 +218,7 @@ include("conexiondb.php");
                     <div class="col-sm-4">
                         <label class="form-check-label" for="exampleCheck1">Venta</label>
                         <label>Precio</label>
-                        <input type="text" class="form-control" name="price_sale" id="tbx_precio" placeholder="precio">
+                        <input type="text" class="form-control" name="price_sale" id="price_sale" placeholder="precio">
                     </div>
                   <div class="col-sm-4">
                         <label class="form-check-label" for="exampleCheck1">Intercambio</label>
@@ -235,15 +235,15 @@ include("conexiondb.php");
           
                         <div class="form-group">
                             <label>Descripcion del Articulo</label>
-                            <input type="description" class="form-control form-control-registro" name="change_description" id="tbx_descripcion_inter" placeholder="descripcion...." style="padding: 2rem 1rem;">
+                            <input type="description" class="form-control form-control-registro" name="change_description" id="change_description" placeholder="descripcion...." style="padding: 2rem 1rem;">
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <label class="form-check-label" for="exampleCheck1">Renta</label>
                         <label >Precio</label>
-                        <input type="text" class="form-control" name="price_rental" id="tbx_precio_renta" placeholder="precio por renta">
+                        <input type="text" class="form-control" name="price_rental" id="price_rental" placeholder="precio por renta">
                         <label >Tiempo</label>
-                        <input type="text" class="form-control" name="time_rental" id="tbx_tiempo" placeholder="tiempo de renta">
+                        <input type="text" class="form-control" name="time_rental" id="time_rental" placeholder="tiempo de renta">
                         <input type="hidden" class="form-control" name="user_id" value="<?=$_SESSION['user_id'];?>">
                     </div>
                 </div>
@@ -321,21 +321,34 @@ include("conexiondb.php");
         }; 
       }
 
-
-
-
-
-
-
     $('#sale_type').change(function(){
+          $('#change_category').attr('disabled',false); 
+          $('#change_description').attr('disabled',false);
+          $('#price_rental').attr('disabled',false);  
+          $('#time_rental').attr('disabled',false);
+          $('#price_sale').attr('disabled',false);   
         var sale_type = $(this).val();
-        if(sale_type == 'Venta'||sale_type == 'Renta'){
-          $('#change_category').attr('disabled',true);
-        }else{
-          $('#change_category').attr('disabled',false);
+        if(sale_type == 'Venta'){
+          $('#change_category').attr('disabled',true); 
+          $('#change_description').attr('disabled',true);
+          $('#price_rental').attr('disabled',true);  
+          $('#time_rental').attr('disabled',true);     
         }
+        if(sale_type == 'Intercambio'){
+          $('#price_rental').attr('disabled',true);  
+          $('#time_rental').attr('disabled',true); 
+          $('#price_sale').attr('disabled',true);  
+        }
+        if(sale_type == 'Renta'){
+           $('#change_category').attr('disabled',true);
+           $('#change_description').attr('disabled',true); 
+           $('#price_sale').attr('disabled',true);   
+           } 
+           if(sale_type == 'Venta/Intercambio'){
+           $('#price_rental').attr('disabled',true);
+           $('#time_rental').attr('disabled',true);   
+           } 
     });
- 
           
 $('#addProduct').submit(function(e){
     e.preventDefault();

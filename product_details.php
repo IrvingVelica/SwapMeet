@@ -1,6 +1,8 @@
 <?php
 include("conexiondb.php");
+ session_start();
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,9 +19,6 @@ include("conexiondb.php");
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <?php
-    session_start();
-    ?>
 
 </head>
 
@@ -104,7 +103,7 @@ include("conexiondb.php");
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">Visita tu perfil</a>
-                        <a class="dropdown-item" href="product_register.html">Vende o cambia un articulo</a>
+                        <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
                 </li>
@@ -126,20 +125,16 @@ include("conexiondb.php");
           </ul>
 
         </nav>
-        <!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
-      
-
-
-          <!-- gallery -->
-  <!--Carousel Wrapper-->
-  
-               
-              
+   <?php
+              $geProductQuery = 'SELECT * FROM products_data WHERE product_id='.$_GET['product_id'];
+              $getProduct = mysqli_query($conexion,  $geProductQuery);
+              $rowProduct =  mysqli_fetch_assoc($getProduct);
+?>
+    
   <div align="center">
   <h1 class="h4 text-gray-900 mb-4">
-  	<label id="lbl_nombre_arti">ARTICULO OFRECIDO</label>
+  	<label id="lbl_nombre_arti">Detalles del producto</label>
   </h1>
 <div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-2" data-ride="carousel">
 
@@ -159,60 +154,53 @@ include("conexiondb.php");
     
 <div class="row">
       <div class="col-md-6 mb-3">
-        <div class="card">
-          <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(8).jpg"
+            <div class="card">
+          <img class="img-fluid" src="<?php echo $rowProduct['img'];?>"
             alt="Card image cap">
         </div>
       </div>
-      <div class="col-md-3 mb-3">
 
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">
-                  <label id="lbl_precio">$$Precio</label>
-                </h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                  <p>
-                  	<label>!!!!!!!Descripcion del articulo que se esta vendiendo!!!!!!!!!!!!!
-                  	</label>
-                  </p>
-                  </div>
-                  <a rel="nofollow" href="#"> 
-                  	<button type="button" class="btn btn-secondary btn-sm " onclick="not_session1()" style="border-radius: 25px;">Comprar</button>
-                  </a>
-                  
-                
-                </div>
-              </div>
-              <div class="alert alert-danger not_session1" role="alert" style="display: none;">se requiere inicio de sesion!!!</div>
+
+
+            <?php if($rowProduct['sale_type'] == 'Venta' || $rowProduct['sale_type'] == 'Venta/Intercambio' || $rowProduct['sale_type'] == 'Renta'){ ?>
+            <div class="col-md-3 mb-3">
+                <div class="card shadow mb-3 text-center">
+                     <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            <label id="lbl_precio">Precio de venta</label>
+                            <label id="lbl_precio">$<?php echo $rowProduct['price_sale'];?></label>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                            <p><label><?php echo $rowProduct['product_description'];?></label></p>
+                        </div>
+                        <a rel="nofollow" href="#"> 
+                  	          <button type="button" class="btn btn-secondary btn-sm "  style="border-radius: 25px;">Comprar</button>
+                        </a>
+                    </div>
+                </div>  
             </div>
+            <?php } ?>
+
+            <?php if( $rowProduct['sale_type'] == 'Intercambio' || $rowProduct['sale_type'] == 'Venta/Intercambio'){ ?>
 
             <div class="col-md-3 mb-3 ">
-           <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">
-                  	<label id="lbl_categoria">Categoria
-                  	</label>
-                  </h6>
+                <div class="card shadow mb-3 text-center">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                  	         <label id="lbl_categoria">Categoria</label>
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="text-center">
+                                <p><label>aqui ira la descripcion del articulo y la opcionde intercambiar cuando actie el vendedor</label></p>
+                        </div>
+                        <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" onclick="not_session2()" style="border-radius: 25px;">Intercambio</button></a>                
+                    </div>
                 </div>
-                <div class="card-body">
-                  <div class="text-center">
-                   
-                  
-                  <p><label>aqui ira la descripcion del articulo y la opcionde intercambiar cuando actie el vendedor</label></p>
-                  </div>
-                  <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" onclick="not_session2()" style="border-radius: 25px;">Intercambio</button></a>
-                  <a href="#">
-                  
-                </a>
-                
-                </div>
-              </div>
-              <div class="alert alert-danger not_session2" role="alert" style="display: none;">se requiere inicio de sesion!!!</div>
-              </div>
+            </div>
+            <?php } ?>
 
   </div>
 
