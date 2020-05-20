@@ -1,6 +1,7 @@
 <?php
 include("conexiondb.php");
 ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -17,7 +18,7 @@ include("conexiondb.php");
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <?php session_start(); ?>
+  
 
 </head>
 
@@ -27,18 +28,18 @@ include("conexiondb.php");
       <!-- Main Content -->
       <div id="content">
         <!-- Topbar -->
-         <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
           <a href="index.php">
             <img src="img/Slogo_b.png" style="border-radius: 35px;" >
           </a>
             
 
           <!-- Topbar Search -->
-        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form action="index.php" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <input type="text" name="q" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
+                    <button type="submit" class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
                     </button>
                 </div>
@@ -60,13 +61,14 @@ include("conexiondb.php");
               <!-- Dropdown - Alerts -->
              
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Herramientas</a>
-                        <a class="dropdown-item" href="product_register.html">Electronicos</a>
-                        <a class="dropdown-item" href="cerrarsesion.php">Ropa</a>
-                         <a class="dropdown-item" href="#">Alimentos</a>
-                        <a class="dropdown-item" href="product_register.html">Muebles</a>
-                       
-                    </div>
+                        <a class="dropdown-item" href="index.php">Todos</a>
+                        <a class="dropdown-item" href="index.php?category=Herramientas">Herramientas</a>
+                        <a class="dropdown-item" href="index.php?category=Electronicos">Electronicos</a>
+                        <a class="dropdown-item" href="index.php?category=Ropa">Ropa</a>
+                         <a class="dropdown-item" href="index.php?category=Alimentos">Alimentos</a>
+                        <a class="dropdown-item" href="index.php?category=Muebles">Muebles</a>
+                        <a class="dropdown-item" href="index.php?category=otros">otros</a>
+            </div>
             </li>
 
             <!-- boton mis arituclos -->
@@ -100,8 +102,8 @@ include("conexiondb.php");
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Visita tu perfil</a>
-                        <a class="dropdown-item" href="product_register.html">Vende o cambia un articulo</a>
+                        <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
+                        <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
                 </li>
@@ -167,7 +169,6 @@ include("conexiondb.php");
                               <option>Electronicos</option>
                               <option>Ropa</option>
                               <option>Alimentos</option>
-                              <option>Renta</option>
                               <option>Muebles</option>
                               <option>Otros</option>
                           </select>

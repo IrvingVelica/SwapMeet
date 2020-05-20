@@ -33,15 +33,18 @@ include("conexiondb.php");
       <div id="content">
 
         <!-- Topbar -->
-         <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+  <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+          <a href="index.php">
             <img src="img/Slogo_b.png" style="border-radius: 35px;" >
+          </a>
+            
 
           <!-- Topbar Search -->
-        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+        <form action="index.php" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-                <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <input type="text" name="q" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
+                    <button type="submit" class="btn btn-primary" type="button">
                         <i class="fas fa-search fa-sm"></i>
                     </button>
                 </div>
@@ -61,14 +64,16 @@ include("conexiondb.php");
                
               </a>
               <!-- Dropdown - Alerts -->
-               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Herramientas</a>
-                        <a class="dropdown-item" href="product_register.html">Electronicos</a>
-                        <a class="dropdown-item" href="cerrarsesion.php">Ropa</a>
-                         <a class="dropdown-item" href="#">Alimentos</a>
-                        <a class="dropdown-item" href="product_register.html">Muebles</a>
-                       
-                    </div>
+             
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="index.php">Todos</a>
+                        <a class="dropdown-item" href="index.php?category=Herramientas">Herramientas</a>
+                        <a class="dropdown-item" href="index.php?category=Electronicos">Electronicos</a>
+                        <a class="dropdown-item" href="index.php?category=Ropa">Ropa</a>
+                         <a class="dropdown-item" href="index.php?category=Alimentos">Alimentos</a>
+                        <a class="dropdown-item" href="index.php?category=Muebles">Muebles</a>
+                        <a class="dropdown-item" href="index.php?category=otros">otros</a>
+            </div>
             </li>
 
             <!-- boton mis arituclos -->
@@ -102,7 +107,7 @@ include("conexiondb.php");
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="#">Visita tu perfil</a>
+                        <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
@@ -157,7 +162,7 @@ include("conexiondb.php");
             <div class="card">
                <div class="card-body">
                         <div class="text-center">
-                                <p><label>aqui ira la descripcion del articulo y la opcionde intercambiar cuando actie el vendedor</label></p>
+                                <p><label><?php echo $rowProduct['product_description'];?></label></p>
                         </div>                   
                   </div>
           <img class="img-fluid" src="<?php echo $rowProduct['img'];?>"
@@ -172,13 +177,20 @@ include("conexiondb.php");
                 <div class="card shadow mb-3 text-center">
                      <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">
+                          <?php if($rowProduct['sale_type'] == 'Renta'){ ?>
+                           <label id="lbl_precio">Precio de renta</label>
+                            <label id="lbl_precio">$<?php echo $rowProduct['price_rental'];?></label>
+                          <?php }else{?>
                             <label id="lbl_precio">Precio de venta</label>
                             <label id="lbl_precio">$<?php echo $rowProduct['price_sale'];?></label>
+                          <?php } ?>
                         </h6>
                     </div>
                     <div class="card-body">
                         <div class="text-center">
-                            <p><label><?php echo $rowProduct['product_description'];?></label></p>
+                          <?php if($rowProduct['sale_type'] == 'Renta'){ ?>
+                            <p><label id="lbl_precio">Tiempo de renta: <?php echo $rowProduct['time_rental'];?></label></p>
+                            <?php }?>
                         </div>
                         <a rel="nofollow" href="#"> 
                   	          <button type="button" class="btn btn-secondary btn-sm "  style="border-radius: 25px;">Comprar</button>
@@ -194,12 +206,12 @@ include("conexiondb.php");
                 <div class="card shadow mb-3 text-center">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">
-                  	         <label id="lbl_categoria">Categoria</label>
+                  	         <label id="lbl_categoria">Cambio por:</label>
                         </h6>
                     </div>
                     <div class="card-body">
                         <div class="text-center">
-                                <p><label>aqui ira la descripcion del articulo y la opcionde intercambiar cuando actie el vendedor</label></p>
+                                <p><label id="lbl_precio"><?php echo $rowProduct['change_description'];?></label></p>
                         </div>
                         <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" onclick="not_session2()" style="border-radius: 25px;">Intercambio</button></a>                
                     </div>
