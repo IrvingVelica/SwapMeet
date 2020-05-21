@@ -1,3 +1,10 @@
+ <?php
+    session_start();
+ ?>
+<?php
+include("conexiondb.php");
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,77 +39,153 @@
 
                  <!-- Topbar -->
              
-                    <nav class=" navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow header">
-                        <img src="img/Slogo_b.png" style="border-radius: 35px;" >
+              <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+                <a href="index.php">
+                  <img src="img/Slogo_b.png" style="border-radius: 35px;" >
+                </a>
+            
 
-                   
+          <!-- Topbar Search -->
+        <form action="index.php" method="GET" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary" type="button">
+                        <i class="fas fa-search fa-sm"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
 
-                            <!-- Topbar Search -->
-                            <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                                  <div class="input-group">
-                                       <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                      <div class="input-group-append">
-                                          <button class="btn btn-primary" type="button">
-                                              <i class="fas fa-search fa-sm"></i>
-                                          </button>
-                                      </div>
-                                 </div>
-                            </form>
+          <!-- Topbar Navbar -->
+          <ul class="navbar-nav ml-auto">
 
-                            <!-- Topbar Navbar -->
-                        <ul class="navbar-nav ml-auto">
+          
 
-                            
+            <!-- boton categorias -->
+             <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Categorias</button>
+                <!-- Counter - Alerts -->
+               
+              </a>
+              <!-- Dropdown - Alerts -->
+             
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="index.php">Todos</a>
+                        <a class="dropdown-item" href="index.php?category=Herramientas">Herramientas</a>
+                        <a class="dropdown-item" href="index.php?category=Electronicos">Electronicos</a>
+                        <a class="dropdown-item" href="index.php?category=Ropa">Ropa</a>
+                         <a class="dropdown-item" href="index.php?category=Alimentos">Alimentos</a>
+                        <a class="dropdown-item" href="index.php?category=Muebles">Muebles</a>
+                        <a class="dropdown-item" href="index.php?category=otros">otros</a>
+            </div>
+            </li>
 
-                              <!-- boton categorias -->
-                               <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Categorias</button>
-                                  <!-- Counter - Alerts -->
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                          <a class="dropdown-item" href="#">Herramientas</a>
-                                          <a class="dropdown-item" href="product_register.html">Electronicos</a>
-                                          <a class="dropdown-item" href="cerrarsesion.php">Ropa</a>
-                                          <a class="dropdown-item" href="#">Alimentos</a>
-                                          <a class="dropdown-item" href="product_register.html">Muebles</a>   
-                                    </div>
-                              </li>
+            <!-- boton mis arituclos -->
+            <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
+               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+              </a>
+              
+            </li>
+            <!-- boton mis ofrecer -->
+              <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dr" href="#">
+               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ventas</button>
+              </a>
+            </li>
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <?php 
+            
+            if (isset($_SESSION['user_id'])) { 
+                $getUserQuery = 'SELECT first_name, last_name FROM users_data WHERE user_id='.$_SESSION['user_id'];
+                $getUser = mysqli_query($conexion, $getUserQuery);
+                $user = mysqli_fetch_assoc($getUser);
+              ?>
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                            <label><?php echo $user['first_name']." ".$user['last_name'];?></label>
+                        </span>
+                        <img class="img-profile rounded-circle" src="img/user.jpg">
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
+                        <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
+                        <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
+                    </div>
+                </li>
+            <?php } else { ?>
+                       <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                            <label>Invitado</label>
+                        </span>
+                        <img class="img-profile rounded-circle" src="img/user.jpg">
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="login.html">Iniciar sesión</a>
+                        <a class="dropdown-item" href="users_register.php">Registrate</a>
+                    </div>
+                </li>
+            <?php } ?>
+          </ul>
 
-                              <!-- boton mis arituclos -->
-                              <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
-                                    </a>
-                              </li>
-                              <!-- boton mis ofrecer -->
-                              <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dr" href="#"">
-                                        <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ventas</button>
-                                    </a>
-                              </li>
+        </nav>
 
+                  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="row">
+            <div class="col-md-6">
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="nombre" name="">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="">
+          </div>
+          </div>
 
-                              <div class="topbar-divider d-none d-sm-block"></div>
+           <div class="col-md-6">
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="nombre" name="">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="">
+          </div>
+          </div>
+          </div>
+   
+        
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
-                              <!-- Nav Item - User Information -->
-                              <li class="nav-item dropdown no-arrow">
-                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <span class="mr-2 d-none d-lg-inline text-gray-600 small"><label>NombreUsername</label></span>
-                                      <img class="img-profile rounded-circle" src="img/user.jpg">
-                                    </a>
-                                    <!-- Dropdown - User Information -->
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="login.html">
-                                           Iniciar sesion
-                                        </a>
-                                        <a class="dropdown-item" href="register.html">
-                                          Registrerse
-                                        </a>
-                                    </div>
-                              </li>
-                        </ul>
-                   </nav>
                    
                     <!-- End of Topbar -->
                     <div align="center">
@@ -201,11 +284,9 @@
 	                                       </div>
 	                         	 </div>
 	                         </div>
-	                         <form class="user">
-                              	<a href="editar_perfil.html" class="btn btn-primary btn-user">
-                                	EDITAR
-                            	 </a>
-                          </form>
+                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                 Gestionar informacion
+                          </button>
 	              </div>  
                  <!-- /.container-fluid -->      
              </div>
