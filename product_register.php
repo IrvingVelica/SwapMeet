@@ -350,7 +350,6 @@ include("conexiondb.php");
            $('#time_rental').attr('disabled',true);   
            } 
     });
-          
 $('#addProduct').submit(function(e){
     e.preventDefault();
     var formData = new FormData(document.getElementById('addProduct')); 
@@ -370,9 +369,10 @@ $('#addProduct').submit(function(e){
     } 
       
     });
-});
-</script>
+});          
 
+ 
+</script>*/
 
 
 

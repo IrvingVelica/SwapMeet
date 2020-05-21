@@ -16,7 +16,7 @@ include("conexiondb.php");
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SWAPMEET</title>
+  <title>swapmeet</title>
 
   <!-- Custom fonts for this template-->
   
@@ -135,61 +135,10 @@ include("conexiondb.php");
             <?php } ?>
           </ul>
 
-        </nav>
-
-                  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form>
-          <div class="row">
-            <div class="col-md-6">
-            <div class="form-group">
-            <input type="text" class="form-control" placeholder="nombre" name="">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="">
-          </div>
-          </div>
-
-           <div class="col-md-6">
-            <div class="form-group">
-            <input type="text" class="form-control" placeholder="nombre" name="">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="">
-          </div>
-          </div>
-          </div>
-   
-        
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-                   
+        </nav>                   
                     <!-- End of Topbar -->
                     <div align="center">
-                        <h1 class="h4 text-gray-900 mb-4">PERFIN DE USUARIO</h1>
+                        <h1 class="h4 text-gray-900 mb-4">PERFIL DE USUARIO</h1>
 	                          <div class="row">
 	                          	 	<div class="col-lg-2 ">
 	                          	 	</div>
@@ -209,12 +158,9 @@ include("conexiondb.php");
 	                                         			<h6 class="m-0 font-weight-bold text-primary">Nombre:</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-2">
-	                                         			<h6 class="m-0 font-weight-bold text-primary">Ap Paterno:</h6>
+	                                         			<h6 class="m-0 font-weight-bold text-primary">Apellidos:</h6>
 	                                    			</div>
-	                                    			<div class="card-header py-2">
-	                                         			<h6 class="m-0 font-weight-bold text-primary">Ap Materno:</h6>
-	                                    			</div>
-	                                    			<div class="card-header py-2">
+	                                     			<div class="card-header py-2">
 	                                         			<h6 class="m-0 font-weight-bold text-primary">Edad:</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-2">
@@ -234,59 +180,60 @@ include("conexiondb.php");
 	                                    			</div>
 	                                       </div>
 	                         	 </div>
+                              <?php
+                              $getUserQuery = 'SELECT * FROM users_data WHERE user_id='.$_SESSION['user_id'];
+                                $getUser = mysqli_query($conexion, $getUserQuery);
+                                  $user = mysqli_fetch_assoc($getUser);
+                              ?>
+
 	                         	 <div class="col-mb-4 ">
 	              							<div class="card shadow mb-1 text-left">
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblNom">usuario</label>
+	                                         				<label id="lblNom"> <?php echo $user['first_name'];?> </label>
 	                                         			</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblPater">gonzales</label>
+	                                         				<label id="lblMater"><?php echo $user['last_name'];?></label>
 	                                         			</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblMater">herrera</label>
+	                                         				<label id="lblAge"><?php echo $user['age'];?></label>
 	                                         			</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblAge">25</label>
+	                                         				<label id="lblEmail"><?php echo $user['email'];?></label>
 	                                         			</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblEmail">asdasdas@uabc.edu.mx</label>
+	                                         				<label id="lblPass"><?php echo $user['password'];?></label>
 	                                         			</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblPass">123165asdas</label>
+	                                         				<label id="lblDir"><?php echo $user['address'];?></label>
 	                                         			</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblDir">Calle #54 fracc.valle de las palmas</label>
-	                                         			</h6>
-	                                    			</div>
-	                                    			<div class="card-header py-1">
-	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblTel">646-164-55-86</label>
+	                                         				<label id="lblTel">ddd</label>
 	                                         			</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight-bold text-secundary">
-	                                         				<label id="lblRed">https://facebook;Profile:user/miperfil.com</label>
+	                                         				<label id="lblRed">dddd</label>
 	                                         			</h6>
 	                                    			</div>
 	                                       </div>
 	                         	 </div>
 	                         </div>
-                           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                           <a href="profile_edit.php" class="btn btn-primary">
                                  Gestionar informacion
-                          </button>
+                          </a>
 	              </div>  
                  <!-- /.container-fluid -->      
              </div>
@@ -294,7 +241,7 @@ include("conexiondb.php");
                   <footer class="sticky-footer bg-danger">
                     <div class="container my-auto">
                       <div class="copyright text-center my-auto">
-                        <span>Swepmeet2020</span>
+                        <span>Swepmeet 2020</span>
                       </div>
                     </div>
                   </footer>
