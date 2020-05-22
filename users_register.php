@@ -84,9 +84,11 @@
                     <input type="password" class="form-control form-control-user confirm_user_password" id="tbx_clave_confir" placeholder="confirmar clave...">
                   </div>
                 </div>
+                <a href="#">
                  <button class="btn btn-primary btn-user btn-block">
                   Registrar
                 </button>
+                </a>
                 <hr>
               </form>
               <a href="index.php">
@@ -177,8 +179,8 @@ $('#addUser').submit(function(e){
 
         $.post('users_engine.php', objUser, function(respuesta) {
             
-            if(parseInt(respuesta)) {
-                //alert('exitoso');
+            if(parseInt(respuesta) == 1) {
+              console.log(respuesta);
                 //window.location.href="direccion";
                  $('.alert-success').show();
                  $('.alert-success').fadeOut(5000); 

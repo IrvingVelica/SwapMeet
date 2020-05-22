@@ -1,3 +1,5 @@
+
+
  <?php
     session_start();
  ?>
@@ -141,7 +143,7 @@ include("conexiondb.php");
                       <form id="userEdit" class="user">
                         <h1 class="h4 text-gray-900 mb-4">EDITAR PERFIL</h1>
                        
-	                          <div class="row justify-content-center">
+                            <div class="row justify-content-center">
 
                                <div class="col-xl-10 col-lg-12 col-md-9">
                                  <?php
@@ -151,14 +153,14 @@ include("conexiondb.php");
                               ?>
 
                                    <div class="row">
-          	                          	 <div class="col-lg-6">
+                                         <div class="col-lg-6">
                                                <div class="form-group row">
                                                   <div class="col-lg-3">
                                                       <label id="lbl_nom" >Nombre</label>
                                                   </div>
                                                   <div class="col-lg-8">
                                                       <div class="col-sm-10 mb-3 mb-sm-0">  
-                                                          <input type="text" class="form-control form-control-registro name" id="name" placeholder="nombre" value="<?php echo $user['first_name']; ?>">
+                                                          <input type="text" class="form-control form-control-registro"  id="first_name" placeholder="nombre" name="first_name" value="<?php echo $user['first_name']; ?>">
                                                       </div>
                                                   </div>
                                                  </div>
@@ -168,7 +170,7 @@ include("conexiondb.php");
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="col-sm-10 mb-3 mb-sm-0">  
-                                                            <input type="text" class="form-control form-control-registro " id="tbx_paterno" placeholder="apellido paterno" value="<?php echo $user['last_name']; ?>">
+                                                            <input type="text" class="form-control form-control-registro" name="last_name" id="last_name" placeholder="apellido paterno" value="<?php echo $user['last_name']; ?>">
                                                         </div>
                                                     </div>
                                                  </div>
@@ -178,7 +180,7 @@ include("conexiondb.php");
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="col-sm-10 mb-3 mb-sm-0">  
-                                                            <input type="text" class="form-control form-control-registro " id="tbx_edad" placeholder="edad" value="<?php echo $user['age']; ?>">
+                                                            <input type="text" class="form-control form-control-registro " id="age" placeholder="edad" name="age" value="<?php echo $user['age']; ?>">
                                                         </div>
                                                     </div>
                                                  </div>
@@ -188,7 +190,7 @@ include("conexiondb.php");
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="col-sm-10 mb-3 mb-sm-0">  
-                                                            <input type="text" class="form-control form-control-registro " id="tbx_direccion" placeholder="Direccion" value="<?php echo $user['address']; ?>">
+                                                            <input type="text" class="form-control form-control-registro " id="address" placeholder="Direccion" name="address" value="<?php echo $user['address']; ?>">
                                                         </div>
                                                     </div>
                                                  </div>              
@@ -200,7 +202,7 @@ include("conexiondb.php");
                                                   </div>
                                                   <div class="col-lg-8">
                                                       <div class="col-sm-10 mb-3 mb-sm-0">  
-                                                          <input type="text" class="form-control form-control-registro " id="tbx_clave" placeholder="********" value="<?php echo $user['password']; ?>">
+                                                          <input type="text" class="form-control form-control-registro " id="password" placeholder="********" name="password" value="<?php echo $user['password']; ?>">
                                                       </div>
                                                   </div>
                                                  </div>
@@ -210,7 +212,7 @@ include("conexiondb.php");
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="col-sm-10 mb-3 mb-sm-0">  
-                                                            <input type="text" class="form-control form-control-registro " id="tbx_confirmar" placeholder="********">
+                                                            <input type="text" class="form-control form-control-registro " id="password_confirm"  placeholder="********">
                                                         </div>
                                                     </div>
                                                  </div>
@@ -220,7 +222,7 @@ include("conexiondb.php");
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="col-sm-10 mb-3 mb-sm-0">  
-                                                            <input type="text" class="form-control form-control-registro " id="tbx_telefono" placeholder="646-455-55-55">
+                                                            <input type="text" class="form-control form-control-registro " id="phone" placeholder="646-455-55-55" name="phone" value="<?php echo $user['phone']; ?>">
                                                         </div>
                                                     </div>
                                                  </div>
@@ -231,11 +233,12 @@ include("conexiondb.php");
                                                     </div>
                                                     <div class="col-lg-8">
                                                         <div class="col-sm-10 mb-3 mb-sm-0">  
-                                                            <input type="text" class="form-control form-control-registro " id="tbx_reds" placeholder="https://www.facebook.com/profile/user1">
+                                                            <input type="text" class="form-control form-control-registro " id="social_network" name="social_network" value="<?php echo $user['social_network']; ?>" placeholder="https://www.facebook.com/profile/user1">
                                                         </div>
                                                     </div>
                                                  </div>
                                                  <div class="form-group row">
+                                                  <div id="preview"></div>
                                                       <div class="col-lg-3">
                                                             <label id="lbl_img">Imagen</label>
                                                       </div>
@@ -243,7 +246,7 @@ include("conexiondb.php");
                                                       <div class="col-sm-10 mb-3 mb-sm-0">
                                                           
                                                               <div class="input-group mb-2">
-                                                                <input type="text" class="form-control form-control-registro" id="tbx_img" placeholder="C://Imga">
+                                                                <input type="file" class="form-control form-control-registro" name="file" id="file" value="<?php echo $user['img'];?>" placeholder="C://Imga">
                                                                  <div class="input-group-prepend">
                                                                       <div class="input-group-text"> 
                                                                           <a href="#" style="color:#4A4949;">
@@ -254,27 +257,29 @@ include("conexiondb.php");
                                                                </div>
                                                           </div>
                                                       </div>
-                                                </div>         
+                                                </div> 
+                                                <input type="hidden" name="imagen" value="<?php echo $user['img'];?>">        
                                         </div>
                                   </div>
                                  
                                 </div>
                               </div>
-                          
-                                <a href="" class="btn btn-primary btn-user">
-                                  GUARDAR
-                               </a>
-                             </form>
+                              <a href="user_profile.php" class="btn btn-secondary">Atras
+                                
+                              </a>
+                               
+                                <button class="btn btn-primary">Guardar</button>
+                         </form>
                           
                            </div>  
                         
-	                     
+                       
              </div>
                 <!-- Footer -->
                   <footer class="sticky-footer bg-danger">
                     <div class="container my-auto">
                       <div class="copyright text-center my-auto">
-                        <span>Swepmeet2020</span>
+                        <span>Swepmeet 2020</span>
                       </div>
                     </div>
                   </footer>
@@ -309,9 +314,32 @@ include("conexiondb.php");
 
 
 <script>
-  $('#userEdit').submit(function(e){
+
+  document.getElementById("file").onchange = function(e) { let reader = new FileReader(); 
+          reader.readAsDataURL(e.target.files[0]);
+          reader.onload = function(){ 
+            let preview = document.getElementById('preview'), image = document.createElement('img'); 
+          image.src = reader.result; preview.innerHTML = ''; preview.append(image); 
+        }; 
+      }
+
+
+
+
+$('#userEdit').submit(function(e){
     e.preventDefault();
-    var name = $('.name').val();
-    console.log(name);
-  }
+    var formData = new FormData(document.getElementById('userEdit')); 
+    $.ajax({
+        url: 'edit_user_engine.php', 
+        type: "post", 
+        dataType: "html", 
+        data: formData, cache: false,
+        contentType: false,
+        processData: false 
+    })
+    .done(function(res){   
+        window.location.href="user_profile.php";
+    });
+});          
+
 </script>

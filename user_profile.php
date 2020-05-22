@@ -139,6 +139,11 @@ include("conexiondb.php");
                     <!-- End of Topbar -->
                     <div align="center">
                         <h1 class="h4 text-gray-900 mb-4">PERFIL DE USUARIO</h1>
+                        <?php
+                              $getUserQuery = 'SELECT * FROM users_data WHERE user_id='.$_SESSION['user_id'];
+                                $getUser = mysqli_query($conexion, $getUserQuery);
+                                  $user = mysqli_fetch_assoc($getUser);
+                              ?>
 	                          <div class="row">
 	                          	 	<div class="col-lg-2 ">
 	                          	 	</div>
@@ -146,7 +151,7 @@ include("conexiondb.php");
 	                                    <div class="card shadow mb-2 text-center">
 	                                        <div class="card-body">
 	                                           <div class="text-center">
-	                                                <img class="img-fluid px-2 px-sm-4 mt-2 mb-3" style="width: 19.3rem;" src="img/user.jpg" alt="">  
+	                       <img class="img-fluid px-2 px-sm-4 mt-2 mb-3" style="width: 19.3rem;" src="<?php echo $user['img'];?>" alt="">  
 	                                           </div>
 	                                                 
 	                                       </div>
@@ -180,11 +185,7 @@ include("conexiondb.php");
 	                                    			</div>
 	                                       </div>
 	                         	 </div>
-                              <?php
-                              $getUserQuery = 'SELECT * FROM users_data WHERE user_id='.$_SESSION['user_id'];
-                                $getUser = mysqli_query($conexion, $getUserQuery);
-                                  $user = mysqli_fetch_assoc($getUser);
-                              ?>
+                              
 
 	                         	 <div class="col-mb-4 ">
 	              							<div class="card shadow mb-1 text-left">
@@ -220,12 +221,12 @@ include("conexiondb.php");
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight text-secundary">
-	                                         				<label id="lblTel">ddd</label>
+	                                         				<label id="p"><?php echo $user['phone'];?></label>
 	                                         			</h6>
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight-bold text-secundary">
-	                                         				<label id="lblRed">dddd</label>
+	                                         				<label id="lblRed"><?php echo $user['social_network'];?></label>
 	                                         			</h6>
 	                                    			</div>
 	                                       </div>

@@ -361,18 +361,16 @@ $('#addProduct').submit(function(e){
         contentType: false,
         processData: false 
     })
-    .done(function(res){
-    if(res==1){
+    .done(function(res){   
+
       $('.alert-success').show();
-      $('.alert-success').fadeOut(5000);
-        console.log(res) ;
-    } 
+      $('.alert-success').fadeOut(5000); 
       
     });
 });          
 
  
-</script>*/
+</script>
 
 
 
