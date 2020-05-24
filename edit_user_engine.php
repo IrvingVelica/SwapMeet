@@ -29,7 +29,6 @@ if (!file_exists($uploadFolder)) { mkdir($uploadFolder, 0777);
   	$img=$imagen;
   }
 
-
 	$updateUser = 'UPDATE users_data SET first_name="'.$user_name.'", last_name="'.$user_lastname.'", password="'.$user_password.'",age= "'.$user_age.'",address="'.$user_address.'",phone="'.$phone.'",social_network="'.$social_network.'",img="'.$img.'" WHERE user_id='.$_SESSION['user_id'];
 		mysqli_query($conexion, $updateUser);
 ?>

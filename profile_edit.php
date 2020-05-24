@@ -116,6 +116,7 @@ include("conexiondb.php");
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
+                        <a class="dropdown-item" href="see_products.php">Mis articulos</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
@@ -250,7 +251,8 @@ include("conexiondb.php");
                                                                  <div class="input-group-prepend">
                                                                       <div class="input-group-text"> 
                                                                           <a href="#" style="color:#4A4949;">
-                                                                              <i class="fa fa-fw fa-image"></i>
+                                                                              <i class="fa fa-fw fa-image">                                                                               
+                                                                              </i>
                                                                           </a>
                                                                      </div>
                                                                  </div>
@@ -275,6 +277,7 @@ include("conexiondb.php");
                         
                        
              </div>
+             <br><br><br>
                 <!-- Footer -->
                   <footer class="sticky-footer bg-danger">
                     <div class="container my-auto">

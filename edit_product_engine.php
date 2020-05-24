@@ -1,16 +1,8 @@
 <?php
 include("conexiondb.php");
-if($_POST['product_name'] == 'delete'){
-	$product_idDelete = $_POST['product_idDelete'];
+session_start();
 
-	//$sql_request = 'DELETE FROM products_data WHERE product_id='.$product_idDelete;// se cumplen las 2 condiciones
-	if(mysqli_query($conexion, $sql_request)){
-		echo json_encode(1);
-	}else{
-		echo json_encode(2);
-	}
 
-}else{
 $product_name = $_POST['product_name'];
 $product_description = $_POST['product_description'];
 $change_description = $_POST['change_description'];
@@ -21,8 +13,13 @@ $time_rental = $_POST['time_rental'];
 $sale_type = $_POST['sale_type'];
 $product_category=$_POST['product_category'];
 $change_category = $_POST['change_category'];
-$user_id = $_POST['user_id'];
+$product_idEdit = $_POST['product_idEdit'];
+echo $product_idEdit;
+
 $img = '';
+$imagen = $_POST['imagen'];
+//print_r($_POST);
+
 
 
 $uploadFolder = 'products';
@@ -36,17 +33,10 @@ if (!file_exists($uploadFolder)) { mkdir($uploadFolder, 0777);
 
   if($_FILES["file"]["name"]){
   	 $img = $uploadFolder.'/'.$name;
+  }else{
+  	$img=$imagen;
   }
 
-//$sql_request = 'INSERT INTO products_data (product_id,user_id, name, product_description, change_description, status, price_sale, price_rental, img, time_rental, sale_type, product_category, change_category) 
-	//VALUES(NULL, "'.$user_id.'","'.$product_name.'", "'.$product_description.'", "'.$change_description.'","'.$status.'","'.$price_sale.'","'.$price_rental.'","'.$img.'","'.$time_rental.'","'.$sale_type.'","'.$product_category.'","'.$change_category.'")';
-
-	if(mysqli_query($conexion, $sql_request)){
-		echo json_encode(1);
-	}else{
-		echo json_encode(2);
-	}
-}
-
-
+	$updateUser = 'UPDATE products_data SET product_name="'.$product_name.'", product_description="'.$product_description.'", change_description="'.$change_description.'",product_status= "'.$status.'",price_sale="'.$price_sale.'",price_rental="'.$price_rental.'",time_rental="'.$time_rental.'",sale_type="'.$sale_type.'",product_category="'.$product_category.'",change_category="'.$change_category.'",img="'.$img.'" WHERE product_id='.$product_idEdit;
+		mysqli_query($conexion, $updateUser);
 ?>

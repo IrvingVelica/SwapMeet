@@ -114,6 +114,7 @@ include("conexiondb.php");
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
+                        <a class="dropdown-item" href="see_products.php">Mis articulos</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
@@ -151,7 +152,11 @@ include("conexiondb.php");
 	                                    <div class="card shadow mb-2 text-center">
 	                                        <div class="card-body">
 	                                           <div class="text-center">
-	                       <img class="img-fluid px-2 px-sm-4 mt-2 mb-3" style="width: 19.3rem;" src="<?php echo $user['img'];?>" alt="">  
+                                              <?php if(empty($user['img'])){
+                                                ?><img class="img-fluid px-2 px-sm-4 mt-2 mb-3" style="width: 19.3rem;" src="img/user.jpg" alt=""> 
+                                             <?php }else{ ?>
+	                       <img class="img-fluid px-2 px-sm-4 mt-2 mb-3" style="width: 19.3rem;" src="<?php echo $user['img'];?>" alt=""> 
+                          <?php } ?>
 	                                           </div>
 	                                                 
 	                                       </div>
@@ -226,7 +231,7 @@ include("conexiondb.php");
 	                                    			</div>
 	                                    			<div class="card-header py-1">
 	                                         			<h6 class="m-0 font-weight-bold text-secundary">
-	                                         				<label id="lblRed"><?php echo $user['social_network'];?></label>
+	                                         				<a href="<?php echo $user['social_network'];?>" id="lblRed"><?php echo $user['social_network'];?></a>
 	                                         			</h6>
 	                                    			</div>
 	                                       </div>
@@ -238,13 +243,16 @@ include("conexiondb.php");
 	              </div>  
                  <!-- /.container-fluid -->      
              </div>
+             <br><br>
                 <!-- Footer -->
                   <footer class="sticky-footer bg-danger">
+
                     <div class="container my-auto">
                       <div class="copyright text-center my-auto">
                         <span>Swepmeet 2020</span>
                       </div>
                     </div>
+
                   </footer>
                   <!-- End of Footer -->
          </div>

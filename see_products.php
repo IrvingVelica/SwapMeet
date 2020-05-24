@@ -1,8 +1,10 @@
 <?php
+    session_start();
+ ?>
+<?php
 include("conexiondb.php");
- session_start();
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,21 +21,16 @@ include("conexiondb.php");
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+   
 </head>
 
 <body id="page-top">
- 
-  
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
+        <!-- Main Content -->
+        <div id="content">
         <!-- Topbar -->
-  <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
           <a href="index.php">
             <img src="img/Slogo_b.png" style="border-radius: 35px;" >
           </a>
@@ -131,190 +128,168 @@ include("conexiondb.php");
           </ul>
 
         </nav>
+										<!-- End of Topbar -->
 
-   <?php
-              $geProductQuery = 'SELECT * FROM products_data WHERE product_id='.$_GET['product_id'];
-              $getProduct = mysqli_query($conexion,  $geProductQuery);
-              $rowProduct =  mysqli_fetch_assoc($getProduct);
-?>
-    
-  <div align="center">
-  <h1 class="h4 text-gray-900 mb-4">
-  	<label id="lbl_nombre_arti">Detalles del producto</label>
-  </h1>
-<div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-2" data-ride="carousel">
+													<!-- Begin Page Content -->
+									<div class="container-fluid">
+                    <?php
+                     $getProductQuery = 'SELECT * FROM products_data WHERE user_id='.$_SESSION['user_id'];
+                $getProduct = mysqli_query($conexion, $getProductQuery);
+                
+                ?>
+												<!-- Page Heading -->
+												<h1 class="h3 mb-2 text-gray-800 text-center">GESTION ARTICULOS</h1>
+												<!-- DataTales Example -->
+												<div class="card shadow mb-4">
+													<div class="card-header py-3 text-center">
+														<h6 class="m-0 font-weight-bold text-primary">Mis Articulos</h6>
+													</div>
+													<div class="card-body">
+														<div class="table-responsive">
+															<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+																<thead>
+																	<tr>
+																		<th>Nombre</th>
+																		<th>Categoria</th>
+																		<th>Tipo de venta</th>
+																		<th>Precio venta</th>
+                                    <th>Precio renta</th>
+                                    <th>Tiempo renta</th>
+																		<th>Editar</th>
+																		<th>Eliminar</th>
+																	</tr>
+																</thead>
+															
+																<tbody>
+																 <?php while($Product = mysqli_fetch_assoc($getProduct)){?>
 
-  <!--Controls-->
-  <div class="controls-top">
-    <a class="black-text" href="#multi-item-example" data-slide="prev"><i class="fas fa-angle-left fa-3x pr-3"></i></a>
-    <a class="black-text" href="#multi-item-example" data-slide="next"><i class="fas fa-angle-right fa-3x pl-3"></i></a>
-  </div>
-  <!--/.Controls-->
-
-  <!--Slides-->
-  <div class="carousel-inner" role="listbox">
-
-    <!--First slide-->
-    <div class="carousel-item active">
-
-    
-<div class="row">
-      <div class="col-md-6 mb-3">
-            <div class="card">
-               <div class="card-body">
-                        <div class="text-center">
-                                <p><label><?php echo $rowProduct['product_description'];?></label></p>
-                        </div>                   
-                  </div>
-          <img class="img-fluid" src="<?php echo $rowProduct['img'];?>"
-            alt="Card image cap">
-        </div>
-      </div>
-
-
-
-            <?php if($rowProduct['sale_type'] == 'Venta' || $rowProduct['sale_type'] == 'Venta/Intercambio' || $rowProduct['sale_type'] == 'Renta'){ ?>
-            <div class="col-md-3 mb-3">
-                <div class="card shadow mb-3 text-center">
-                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">
-                          <?php if($rowProduct['sale_type'] == 'Renta'){ ?>
-                           <label id="lbl_precio">Precio de renta</label>
-                            <label id="lbl_precio">$<?php echo $rowProduct['price_rental'];?></label>
-                          <?php }else{?>
-                            <label id="lbl_precio">Precio de venta</label>
-                            <label id="lbl_precio">$<?php echo $rowProduct['price_sale'];?></label>
-                          <?php } ?>
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-center">
-                          <?php if($rowProduct['sale_type'] == 'Renta'){ ?>
-                            <p><label id="lbl_precio">Tiempo de renta: <?php echo $rowProduct['time_rental'];?></label></p>
-                            <?php }?>
-                        </div>
-                        <a rel="nofollow" href="#"> 
-                  	          <button type="button" class="btn btn-secondary btn-sm "  style="border-radius: 25px;">Comprar</button>
-                        </a>
-                    </div>
-                </div>  
-            </div>
-            <?php } ?>
-
-            <?php if( $rowProduct['sale_type'] == 'Intercambio' || $rowProduct['sale_type'] == 'Venta/Intercambio'){ ?>
-
-            <div class="col-md-3 mb-3 ">
-                <div class="card shadow mb-3 text-center">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">
-                  	         <label id="lbl_categoria">Cambio por:</label>
-                        </h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="text-center">
-                                <p><label id="lbl_precio"><?php echo $rowProduct['change_description'];?></label></p>
-                        </div>
-                        <a rel="nofollow" href="#"> <button type="button" class="btn btn-secondary btn-sm" onclick="not_session2()" style="border-radius: 25px;">Intercambio</button></a>                
-                    </div>
-                </div>
-            </div>
-            <?php } ?>
-
-  </div>
-
-    </div>
-    <!--/.First slide-->
-  </div>
-  <!--/.Slides-->
-</div>
-          <!--  end gallery -->
-          
-            
-            
-  
-
-        
-       </div>   
-        <!-- /.container-fluid -->
-
-      
-    </div>
-
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-danger">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Swepmeet2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
-    
-    <!-- End of Content Wrapper -->
+                                  
+																	<tr>
+																		<td><?php echo $Product['name'];?></td>
+																		<td><?php echo $Product['product_category'];?></td>
+																		<td><?php echo $Product['sale_type'];?></td>
+                                    <?php if(empty($Product['price_sale'])){
+                                      ?><td>N/A</td>
+                                   <?php }else{?>                                    
+																		<td>$<?php echo $Product['price_sale'];?></td>
+                                  <?php } ?> 
+                                  <?php if(empty($Product['price_rental'])){
+                                      ?><td>N/A</td>
+                                   <?php }else{?>                                    
+                                    <td>$<?php echo $Product['price_rental'];?></td>
+                                  <?php } ?> 
+                                  <?php if(empty($Product['time_rental'])){
+                                      ?><td>N/A</td>
+                                   <?php }else{?>                                    
+                                    <td><?php echo $Product['time_rental'];?></td>
+                                  <?php } ?>                     
+																		<td><a href="edit_product.php?edit_product=<?php echo $Product['product_id'];?>"><button class="btn btn-secondary " id="edit" value="">Editar</button></a></td>
+																		<td><button class="btn btn-danger delete"  id="delete" data-toggle="modal" data-target="#logoutModal"  value="<?php echo $Product['product_id'];?>">Eliminar</button> </td>
+                                    <?php } ?>  
+																	</tr>
+																
+														
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+									</div>
+									<!-- /.container-fluid -->
+						 </div>
+						 <!-- End of Main Content -->
+						 <br>
+						 <br>
+						 <br>
+						 <br>
+						 <br>
+						
+							<!-- Footer -->
+							<footer class="sticky-footer bg-danger">
+								<div class="container my-auto">
+									<div class="copyright text-center my-auto">
+										<span>08/05/2020© Copyright</span>
+									</div>
+								</div>
+							</footer>
+							<!-- End of Footer -->
+				</div>
+		</div>
+		<!-- End of Content Wrapper -->
 
  
-  <!-- End of Page Wrapper -->
+	<!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
- <!-- Logout Debes iniciar secion para ofrecer articulo-->
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
+
+	 <!-- modal de eliminar articulo-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Bienvenido</h5>
+          <h5 class="modal-title" id="exampleModalLabel">AVISO</h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body">Iniciar sesion primero</div>
+        <div class="modal-body">Seguro que desear eliminar este articulo!</div>
         <div class="modal-footer">
         
-          <a class="btn btn-secondary" href="login.html">Iniciar sesion</a>
+          <div class="btn btn-danger confirmar_borrar" data-dismiss="modal">Aceptar</div>
+          <div class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</div>
         </div>
       </div>
     </div>
   </div>
  
-<!-- Bootstrap core JavaScript-->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="js/jquery.easing.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="js/jquery.easing.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="js/Chart.min.js"></script>
-  <script type="text/javascript" src="js/all.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
-  
+	<!-- Page level plugins -->
+	<script src="js/Chart.min.js"></script>
+	<script type="text/javascript" src="js/all.min.js"></script>
+
+	<!-- Page level custom scripts -->
+	<script src="js/demo/chart-area-demo.js"></script>
+	<script src="js/demo/chart-pie-demo.js"></script>
+	
 
 </body>
 
 </html>
 
 
-
 <script>
-  function not_session1(){
-    $('.not_session1').show();
-    $('.not_session1').fadeOut(5000); 
+  var borrar = 0;
 
-  }
-  function not_session2(){
-    $('.not_session2').show();
-    $('.not_session2').fadeOut(5000); 
-  }
+  $('.delete').click(function(){
+   product_idDelete = $(this).val();
+
+});
   
+  $('.confirmar_borrar').click(function(){
+   console.log(borrar);
+   var objDelUser = {
+            'product_idDelete':product_idDelete,
+            'product_name': 'delete'
+            };
+
+        $.post('products_engine.php', objDelUser, function(respuesta) {
+                      //respuesta = JSON.parse(respuesta);                      
+                      window.location.href="see_products.php";   
+         
+        });
+
+});    
 </script>
