@@ -9,40 +9,31 @@ include("conexiondb.php");
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>swapmeet</title>
+    <!-- Custom fonts for this template-->
+    <link href="css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>swapmeet</title>
-
-  <!-- Custom fonts for this template-->
-  
- <link href="css/all.min.css" rel="stylesheet" type="text/css">
- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
- <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+   
 </head>
 
 <body id="page-top">
- 
-  
-  <!-- Page Wrapper -->
-    <div id="wrapper">
-      <!-- Content Wrapper -->
-          <div id="content-wrapper" class="d-flex flex-column">
-
-               <!-- Main Content -->
-               <div id="content">
-
-                 <!-- Topbar -->
-             
-              <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
-                <a href="index.php">
-                  <img src="img/Slogo_b.png" style="border-radius: 35px;" >
-                </a>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+          <a href="index.php">
+            <img src="img/Slogo_b.png" style="border-radius: 35px;" >
+          </a>
             
 
           <!-- Topbar Search -->
@@ -91,10 +82,12 @@ include("conexiondb.php");
             </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dr" href="#">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ventas</button>
-              </a>
-            </li>
+                   <a href="help_support.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                  </a>
+                                   
+              </li>
+
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
             
@@ -136,8 +129,7 @@ include("conexiondb.php");
             <?php } ?>
           </ul>
 
-        </nav>                   
-                    <!-- End of Topbar -->
+        </nav>
                     <div align="center">
                         <h1 class="h4 text-gray-900 mb-4">PERFIL DE USUARIO</h1>
                         <?php

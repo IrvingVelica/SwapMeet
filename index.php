@@ -82,10 +82,12 @@ include("conexiondb.php");
             </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dr" href="#">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ventas</button>
-              </a>
-            </li>
+                   <a href="help_support.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                  </a>
+                                   
+              </li>
+
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
             

@@ -26,10 +26,8 @@ $uploadFolder = 'products';
 $temp_name = $_FILES["file"]["tmp_name"];
 $nameSeed = rand(1,1000000); 
 $name = strtolower(str_replace(array(':', '', '/', '*', '[', ']', '(', ')', '{', '}', ' '), '',$nameSeed.$_FILES["file"]["name"]));
-if (!file_exists($uploadFolder)) { mkdir($uploadFolder, 0777);
-  chmod($uploadFolder, 0777); 
-  } move_uploaded_file($temp_name, "$uploadFolder/$name"); 
-  chmod("$uploadFolder/$name", 0777);
+move_uploaded_file($temp_name, "$uploadFolder/$name"); 
+  
 
   if($_FILES["file"]["name"]){
   	 $img = $uploadFolder.'/'.$name;
@@ -37,6 +35,6 @@ if (!file_exists($uploadFolder)) { mkdir($uploadFolder, 0777);
   	$img=$imagen;
   }
 
-	$updateUser = 'UPDATE products_data SET product_name="'.$product_name.'", product_description="'.$product_description.'", change_description="'.$change_description.'",product_status= "'.$status.'",price_sale="'.$price_sale.'",price_rental="'.$price_rental.'",time_rental="'.$time_rental.'",sale_type="'.$sale_type.'",product_category="'.$product_category.'",change_category="'.$change_category.'",img="'.$img.'" WHERE product_id='.$product_idEdit;
+	 $updateUser = 'UPDATE products_data SET name="'.$product_name.'", product_description="'.$product_description.'", change_description="'.$change_description.'",status= "'.$status.'",price_sale="'.$price_sale.'",price_rental="'.$price_rental.'",time_rental="'.$time_rental.'",sale_type="'.$sale_type.'",product_category="'.$product_category.'",change_category="'.$change_category.'",img="'.$img.'" WHERE product_id='.$product_idEdit;
 		mysqli_query($conexion, $updateUser);
 ?>

@@ -1,3 +1,4 @@
+
  <?php
     session_start();
  ?>
@@ -18,6 +19,8 @@ include("conexiondb.php");
     <!-- Custom fonts for this template-->
     <link href="css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' type='text/css'>
+	<link rel="stylesheet" href="css/styles.css">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -81,12 +84,16 @@ include("conexiondb.php");
               
             </li>
             <!-- boton mis ofrecer -->
-              <li class="nav-item dropdown no-arrow mx-1">
-                   <a href="help_support.php" class="nav-link dropdown-toggle">
-                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
-                  </a>
-                                   
-              </li>
+                  <li class="nav-item dropdown no-arrow mx-1">
+                                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                      <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                          <a class="dropdown-item" href="help_support.html">Sugerencias</a>
+                                          <a class="dropdown-item" href="product_register.html">Soporte</a>
+                                            
+                                    </div>
+                               </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
@@ -134,71 +141,84 @@ include("conexiondb.php");
 
 													<!-- Begin Page Content -->
 									<div class="container-fluid">
-                    <?php
-                     $getProductQuery = 'SELECT * FROM products_data WHERE user_id='.$_SESSION['user_id'];
-                $getProduct = mysqli_query($conexion, $getProductQuery);
-                
-                ?>
-												<!-- Page Heading -->
-												<h1 class="h3 mb-2 text-gray-800 text-center">GESTION ARTICULOS</h1>
+											<h1 class="h3 mb-2 text-gray-800 text-center">AYUDA</h1>
+										<div class="row">
+											<div class="col-lg-6 ">
 												<!-- DataTales Example -->
 												<div class="card shadow mb-4">
-													<div class="card-header py-3 text-center">
-														<h6 class="m-0 font-weight-bold text-primary">Mis Articulos</h6>
-													</div>
-													<div class="card-body">
-														<div class="table-responsive">
-															<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-																<thead>
-																	<tr>
-																		<th>Nombre</th>
-																		<th>Categoria</th>
-																		<th>Tipo de venta</th>
-																		<th>Precio venta</th>
-                                    <th>Precio renta</th>
-                                    <th>Tiempo renta</th>
-																		<th>Editar</th>
-																		<th>Eliminar</th>
-																	</tr>
-																</thead>
-															
-																<tbody>
-																 <?php while($Product = mysqli_fetch_assoc($getProduct)){?>
-
-                                  
-																	<tr>
-																		<td><?php echo $Product['name'];?></td>
-																		<td><?php echo $Product['product_category'];?></td>
-																		<td><?php echo $Product['sale_type'];?></td>
-                                    <?php if(empty($Product['price_sale'])){
-                                      ?><td>N/A</td>
-                                   <?php }else{?>                                    
-																		<td>$<?php echo $Product['price_sale'];?></td>
-                                  <?php } ?> 
-                                  <?php if(empty($Product['price_rental'])){
-                                      ?><td>N/A</td>
-                                   <?php }else{?>                                    
-                                    <td>$<?php echo $Product['price_rental'];?></td>
-                                  <?php } ?> 
-                                  <?php if(empty($Product['time_rental'])){
-                                      ?><td>N/A</td>
-                                   <?php }else{?>                                    
-                                    <td><?php echo $Product['time_rental'];?></td>
-                                  <?php } ?>                     
-																		<td><a href="edit_product.php?edit_product=<?php echo $Product['product_id'];?>"><button class="btn btn-secondary " id="edit" value="">Editar</button></a></td>
-																		<td><button class="btn btn-danger delete"  id="delete" data-toggle="modal" data-target="#logoutModal"  value="<?php echo $Product['product_id'];?>">Eliminar</button> </td>
-                                    <?php } ?>  
-																	</tr>
-																
-														
-																</tbody>
-															</table>
+														<div class="card-header py-3 text-center">
+															<h6 class="m-0 font-weight-bold text-primary">Soporte</h6>
 														</div>
-													</div>
+														<div class="card-body">
+															<form id="support" class="form-1">
+															<div class="form-group">
+										 					 	<label>Seleccione Area</label>
+															 	 <select class="form-control" id="support_area">
+										   							 <option>Mejor Intercamnio</option>
+										   							 <option>Mejora compra</option>
+										    					 	<option>Mis articulos</option>
+										    					 	<option>Perfik</option>
+										  						</select>
+															</div>
+															
+															<div class="form-group">
+										                  		<label>Descripcion del problema</label>
+										                  		<input type="description" class="form-control form-control-registro" id="description_support" placeholder="descripcion....">
+										              		</div>
+										              		<div align="center">
+										              			<a id="send_support" class="btn btn-secondary" href="#" data-dismiss="modal">Enviar</a>
+										              		</div>
+										              	</form>
+													  </div>
 												</div>
+											</div>
+
+
+
+
+
+
+												<div class="col-lg-6 ">
+													<!-- DataTales Example -->
+													<div class="card shadow mb-4">
+															<div class="card-header py-3 text-center">
+																<h6 class="m-0 font-weight-bold text-primary">Sugerencias</h6>
+															</div>
+															<div class="card-body">
+																<form id="evaluation" class="form-1">
+																		<div class="form-group">
+														 					 <label>Califique a SwapMeet?</label>
+														 					 <section class="section" id="section-1">
+																			
+																				<div class="form-field">
+																					<select id="stars" class="star-rating">
+																						<option value="">Calificacion:</option>
+																						<option value="5">Fantastico</option>
+																						<option value="4">Genial</option>
+																						<option value="3">Bueno</option>
+																						<option value="2">Aceptable</option>
+																						<option value="1">Terrible</option>
+																					</select>
+																				</div>
+																			
+																			</section>		 
+																 		</div>
+																			
+																	 <div class="form-group">
+													                  	<label>Sugerencias:</label>
+													                   <input type="description" class="form-control form-control-registro" id="suggestion" placeholder="descripcion....">
+													             	 </div>
+													              	<div align="center">
+													             	 	<a id="send_evauation" class="btn btn-secondary" href="#">Enviar</a>
+													              	</div>
+													              </form>
+															</div>
+													</div>
+											</div>
+										</div>			
 									</div>
 									<!-- /.container-fluid -->
-						 </div>
+						 	 </div>
 						 <!-- End of Main Content -->
 						 <br>
 						 <br>
@@ -210,7 +230,7 @@ include("conexiondb.php");
 							<footer class="sticky-footer bg-danger">
 								<div class="container my-auto">
 									<div class="copyright text-center my-auto">
-										<span>08/05/2020© Copyright</span>
+										<span>Swapmeet 2020</span>
 									</div>
 								</div>
 							</footer>
@@ -228,24 +248,7 @@ include("conexiondb.php");
 	</a>
 
 	 <!-- modal de eliminar articulo-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">AVISO</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Seguro que desear eliminar este articulo!</div>
-        <div class="modal-footer">
-        
-          <div class="btn btn-danger confirmar_borrar" data-dismiss="modal">Aceptar</div>
-          <div class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</div>
-        </div>
-      </div>
-    </div>
-  </div>
+
  
 
 	<!-- Bootstrap core JavaScript-->
@@ -266,31 +269,67 @@ include("conexiondb.php");
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
 	
+	<script src="js/star-rating.min.js"></script>
+		<script>
+			$('#send_evauation').click(function(e){
+    		e.preventDefault();
+    		var stars = $('#stars').val();
+    		var suggestion = $('#suggestion').val();
+    		//console.log(stars);
+    		//console.log(suggestion);
+    		
+    		var objEvaluation = {    			
+    		'stars': stars,
+    		'suggestion' : suggestion, 
+    		'action' : 'evaluation'
+
+    		};
+    		$.post('help_support_engine.php',objEvaluation,function(respuesta){
+    			//alrert('gracias por enviarnos tu sugerencia');
+    		})
+			});
+
+			$('#send_support').click(function(e){
+    		e.preventDefault();
+    		var support_area = $('#support_area').val();
+    		var description_support = $('#description_support').val();
+    		//console.log(support_area);
+    		//console.log(description_support);
+    		var objSupport = {
+    			
+    			'support_area' : support_area,
+    			'description_support' : description_support, 
+    			'action' : 'support'
+
+    		};
+    		$.post('help_support_engine.php',objSupport,function(respuesta){
+    			//alrert('gracias por enviarnos tu sugerencia');
+    		})
+			});
+
+
+
+
+		var destroyed = false;
+		var starratings = new StarRating( '.star-rating', {
+			onClick: function( el ) {
+				console.log( 'Selected: ' + el[el.selectedIndex].text );
+			},
+		});
+		document.querySelector( '.toggle-star-rating' ).addEventListener( 'click', function() {
+			if( !destroyed ) {
+				starratings.destroy();
+				destroyed = true;
+			}
+			else {
+				starratings.rebuild();
+				destroyed = false;
+			}
+		});
+	</script>
 
 </body>
 
 </html>
 
 
-<script>
-  var borrar = 0;
-
-  $('.delete').click(function(){
-   product_idDelete = $(this).val();
-
-});
-  
-  $('.confirmar_borrar').click(function(){
-   console.log(borrar);
-   var objDelUser = {
-            'product_idDelete':product_idDelete,
-            'action': 'delete'
-            };
-
-        $.post('products_engine.php', objDelUser, function(respuesta) {
-                      //respuesta = JSON.parse(respuesta);                      
-                      window.location.href="see_products.php";            
-        });
-
-});    
-</script>

@@ -1,9 +1,9 @@
 <?php
 include("conexiondb.php");
-if($_POST['product_name'] == 'delete'){
+if($_POST['action'] == 'delete'){
 	$product_idDelete = $_POST['product_idDelete'];
 
-	//$sql_request = 'DELETE FROM products_data WHERE product_id='.$product_idDelete;// se cumplen las 2 condiciones
+	$sql_request = 'DELETE FROM products_data WHERE product_id='.$product_idDelete;// se cumplen las 2 condiciones
 	if(mysqli_query($conexion, $sql_request)){
 		echo json_encode(1);
 	}else{
@@ -38,8 +38,8 @@ if (!file_exists($uploadFolder)) { mkdir($uploadFolder, 0777);
   	 $img = $uploadFolder.'/'.$name;
   }
 
-//$sql_request = 'INSERT INTO products_data (product_id,user_id, name, product_description, change_description, status, price_sale, price_rental, img, time_rental, sale_type, product_category, change_category) 
-	//VALUES(NULL, "'.$user_id.'","'.$product_name.'", "'.$product_description.'", "'.$change_description.'","'.$status.'","'.$price_sale.'","'.$price_rental.'","'.$img.'","'.$time_rental.'","'.$sale_type.'","'.$product_category.'","'.$change_category.'")';
+$sql_request = 'INSERT INTO products_data (product_id,user_id, name, product_description, change_description, status, price_sale, price_rental, img, time_rental, sale_type, product_category, change_category) 
+	VALUES(NULL, "'.$user_id.'","'.$product_name.'", "'.$product_description.'", "'.$change_description.'","'.$status.'","'.$price_sale.'","'.$price_rental.'","'.$img.'","'.$time_rental.'","'.$sale_type.'","'.$product_category.'","'.$change_category.'")';
 
 	if(mysqli_query($conexion, $sql_request)){
 		echo json_encode(1);

@@ -3,6 +3,7 @@
  ?>
 <?php
 include("conexiondb.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,10 +82,12 @@ include("conexiondb.php");
             </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dr" href="#">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ventas</button>
-              </a>
-            </li>
+                   <a href="help_support.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                  </a>
+                                   
+              </li>
+
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
             
@@ -128,7 +131,6 @@ include("conexiondb.php");
 
         </nav>
 
-
                        <div class="card o-hidden border-0 shadow-lg my-5">
                         <?php
                      $getProductQuery = 'SELECT * FROM products_data WHERE product_id='.$_GET['edit_product'];
@@ -167,31 +169,31 @@ include("conexiondb.php");
                                                   <div class="form-group">
                                                          <label>Seleccione Categoria</label>
                                                          <select class="form-control form-control-registro" name="product_category" id="product_category">
-                                                            <option>Herramientas</option>
-                                                            <option>Electronicos</option>
-                                                            <option>Ropa</option>
-                                                            <option>Alimentos</option>
-                                                            <option>Muebles</option>
-                                                            <option>Otros</option>
+                                                            <option <?php if($Product['product_category'] == 'Herramientas'){echo 'selected';} ?>>Herramientas</option>
+                                                            <option <?php if($Product['product_category'] == 'Electronicos'){echo 'selected';} ?>>Electronicos</option>
+                                                            <option <?php if($Product['product_category'] == 'Ropa'){echo 'selected';} ?>>Ropa</option>
+                                                            <option <?php if($Product['product_category'] == 'Alimentos'){echo 'selected';} ?>>Alimentos</option>
+                                                            <option <?php if($Product['product_category'] == 'Muebles'){echo 'selected';} ?>>Muebles</option>
+                                                            <option <?php if($Product['product_category'] == 'Otros'){echo 'selected';} ?>>Otros</option>
                                                          </select>
                                                   </div>
                                                   <div class="form-group">
                                                         <label>Seleccione estado</label>
                                                         <select class="form-control form-control-registro " name="product_status" id="tbx_selec_estado">
-                                                            <option value="Nuevo">Nuevo</option>
-                                                            <option value="Usado">Usado</option>
+                                                            <option <?php if($Product['status'] == 'Nuevo'){echo 'selected';} ?>>Nuevo</option>
+                                                            <option <?php if($Product['status'] == 'Usado'){echo 'selected';} ?>>Usado</option>
                                                         </select>
                                                   </div>
                                                   <div class="form-group">
                                                         <label class="form-check-label" for="exampleCheck1">Intercambio</label>
                                                         <br>
                                                         <select  type="text" class="form-control form-control-registro change_category" name="change_category" id="change_category">
-                                                            <option>Herramientas</option>
-                                                            <option>Electronicos</option>
-                                                            <option>Ropa</option>
-                                                            <option>Alimentos</option>
-                                                            <option>Muebles</option>
-                                                            <option>Otros</option>
+                                                            <option <?php if($Product['change_category'] == 'Herramientas'){echo 'selected';} ?>>Herramientas</option>
+                                                            <option <?php if($Product['change_category'] == 'Electronicos'){echo 'selected';} ?>>Electronicos</option>
+                                                            <option <?php if($Product['change_category'] == 'Ropa'){echo 'selected';} ?>>Ropa</option>
+                                                            <option <?php if($Product['change_category'] == 'Alimentos'){echo 'selected';} ?>>Alimentos</option>
+                                                            <option <?php if($Product['change_category'] == 'Muebles'){echo 'selected';} ?>>Muebles</option>
+                                                            <option <?php if($Product['change_category'] == 'Otros'){echo 'selected';} ?>>Otros</option>
                                                         </select>
                                                         <div class="form-group">
                                                             <label>Descripcion del Articulo</label>
@@ -202,13 +204,21 @@ include("conexiondb.php");
                                     </div>
                                     
                                     <div class="col-lg-4">
-                                        <div class="p-5">   
+                                        <div class="p-5">  
+                                        <style type="text/css">
+                                          #preview img{width: 50%;};
+                                        </style> 
 
                                                 <div class="form-group">
-                                                    <div id="preview"></div>
+                                                    <div id="preview">
+                                                      <?php if($Product['img']){?>
+                                                        <img  src="<?php echo $Product['img'];?>">
+                                                      <?php } ?>
+                                                      
+                                                    </div>
                                                           <label >Subir Imagen</label>
                                                                 <div class="input-group mb-2">
-                                                                     <input type="file" class="form-control" name="file" id="file" placeholder="C://Imga" value="$<?php echo $Product['img'];?>">
+                                                                     <input type="file" class="form-control" name="file" id="file" placeholder="C://Imga" value="">
                                                                      <div class="input-group-prepend">
                                                                          <div class="input-group-text">
                                                                              <a href="#" style="color:#4A4949;">
@@ -222,11 +232,11 @@ include("conexiondb.php");
                                                 <div class="form-group">
                                                     <label>Tipo de venta</label>
                                                     <select class="form-control form-control-registro sale_type" name="sale_type" id="sale_type">
-                                                        <option selected value="">Selecciona de la lista</option>
-                                                        <option>Venta</option>
-                                                        <option>Intercambio</option>
-                                                        <option>Renta</option>
-                                                        <option>Venta/Intercambio</option>
+                                                        <option value="">Selecciona de la lista</option>
+                                                        <option <?php if($Product['sale_type'] == 'Venta'){echo 'selected';} ?>>Venta</option>
+                                                        <option <?php if($Product['sale_type'] == 'Intercambio'){echo 'selected';} ?>>Intercambio</option>
+                                                        <option <?php if($Product['sale_type'] == 'Renta'){echo 'selected';} ?>>Renta</option>
+                                                        <option <?php if($Product['sale_type'] == 'Venta/Intercambio'){echo 'selected';} ?>>Venta/Intercambio</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group">
@@ -237,6 +247,7 @@ include("conexiondb.php");
                                                         <input type="text" class="form-control" name="time_rental" id="time_rental" placeholder="tiempo de renta" value="<?php echo $Product['time_rental'];?>">
                                                         <input type="hidden" name="imagen" value="<?php echo $Product['img'];?>">
                                                         <input type="hidden" name="product_idEdit" value="<?php echo $_GET['edit_product'];?>">
+                                                        <input type="hidden" name="action" value="edit">
                                                          
                                                         
                                                     </div>
@@ -367,7 +378,7 @@ $('#productEdit').submit(function(e){
         processData: false 
     })
     .done(function(res){   
-        window.location.href="#";
+        window.location.href="see_products.php";
     });
 });          
 
