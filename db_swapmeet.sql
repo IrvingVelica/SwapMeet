@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2020 a las 23:10:49
+-- Tiempo de generación: 25-05-2020 a las 05:11:53
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -36,6 +36,31 @@ CREATE TABLE `categories` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `help_support`
+--
+
+CREATE TABLE `help_support` (
+  `support_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `support` varchar(20) NOT NULL,
+  `description` varchar(100) NOT NULL,
+  `evaluation` int(11) NOT NULL,
+  `suggestion` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `help_support`
+--
+
+INSERT INTO `help_support` (`support_id`, `user_id`, `support`, `description`, `evaluation`, `suggestion`) VALUES
+(13, 62, 'Mejor Intercamnio', 'no veo el precio de los articulos', 0, ''),
+(18, 62, '', '', 3, 'si incluyen el precio dare mas estrellas'),
+(24, 62, '', '', 3, 'si incluyen el precio dare mas estrellas'),
+(25, 62, 'Mejor Intercamnio', 'no veo el precio de los articulos', 0, '');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `products_data`
 --
 
@@ -60,14 +85,9 @@ CREATE TABLE `products_data` (
 --
 
 INSERT INTO `products_data` (`product_id`, `user_id`, `name`, `product_description`, `change_description`, `status`, `price_sale`, `price_rental`, `img`, `time_rental`, `sale_type`, `product_category`, `change_category`) VALUES
-(75, 46, 'Samsung S8', 'Nuevo en su caja con accesorios', '', 'Nuevo', '100', '', 'products/775898s8.jpg', '', 'Venta', 'Electronicos', ''),
-(76, 46, 'Zapato converse verde', 'Solo 10 puestas', '', 'Usado', '350', '', 'products/436853converse.jpg', '', 'Venta', 'Ropa', ''),
-(77, 46, 'Martillo', 'Martillo marca Trupper en su caja', '', 'Nuevo', '200', '', 'products/681865martillo.jpg', '', 'Venta', 'Herramientas', ''),
-(78, 46, 'Consola Xbox One S', 'Viene con 3 juegos y 1 control', 'Cambio por una cama king size', 'Usado', '', '', 'products/464057xbox360.jpg', '', 'Intercambio', 'Electronicos', 'Muebles'),
-(79, 46, 'Balon de futbol', 'Solo lo usamos 5 temporadas', 'Cambio por una pelota de tenis', 'Usado', '100', '', 'products/109140balonfutbol.jpg', '', 'Venta/Intercambio', 'Otros', 'Herramientas'),
-(80, 46, 'Consola xbox', 'Rento consola pirata con 100 juegos', '', 'Usado', '', '100 ', 'products/239975xbox.jpg', '3 dias', 'Renta', 'Electronicos', ''),
-(81, 46, 'Carretilla', 'Carretilla nueva sin usarse', 'Cambio por revolvedora', 'Usado', '500', '', 'products/361276carretilla.jpg', '', 'Venta/Intercambio', 'Herramientas', 'Herramientas'),
-(82, 46, 'Sueter Puma', 'Sueter Puma talla L', '', 'Nuevo', '300', '', 'products/569981sueterpuma.jpg', '', 'Venta', 'Ropa', ''),
+(79, 62, 'Balon de futbol americano', 'Solo lo usamos 5 temporadas', '', 'Nuevo', '100', '', 'products/425497pc.jpg', '', 'Venta', 'Herramientas', ''),
+(80, 62, 'Consola xbox', 'Rento consola pirata con 100 juegos', '', 'Usado', '', '100 ', 'products/239975xbox.jpg', '3 dias', 'Renta', 'Electronicos', ''),
+(81, 46, 'Carretilla', 'Carretilla nueva sin usarse', '', 'Usado', '', '40', 'products/261085prro.png', '1 hora', 'Renta', 'Ropa', 'Herramientas'),
 (83, 46, 'Calcetines', 'Calcetin nuevo uan puesta', '', 'Nuevo', '', '100', 'products/913832calcetineswilson.jpg', '1 hora', 'Renta', 'Ropa', '');
 
 -- --------------------------------------------------------
@@ -109,21 +129,19 @@ CREATE TABLE `users_data` (
   `password` varchar(50) NOT NULL,
   `age` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `address` varchar(50) NOT NULL
+  `address` varchar(50) NOT NULL,
+  `phone` varchar(20) DEFAULT NULL,
+  `social_network` varchar(100) DEFAULT NULL,
+  `img` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `users_data`
 --
 
-INSERT INTO `users_data` (`user_id`, `first_name`, `last_name`, `password`, `age`, `email`, `address`) VALUES
-(46, 'david', 'moeles', 'x', 45, 'dmorales1@uabc.edu.mx', 'casa'),
-(52, 'david', 'morales', '123', 2, 'Ylinares1@uabc.edu.mx', 'casa'),
-(53, 'david', 'morales', '123', 2, 'Ylinares1@uabc.edu.mx', 'casa'),
-(54, 'david', 'moeles', '123', 45, 'linares1@uabc.edu.mx', 'casa'),
-(55, 'david', 'moeles', '123', 45, 'linares1@uabc.edu.mx', 'casa'),
-(56, 'dddd', 'ddd', '1', 3, 'a@a', 'd'),
-(57, 'dddd', 'ddd', '1', 3, 'a@a', 'd');
+INSERT INTO `users_data` (`user_id`, `first_name`, `last_name`, `password`, `age`, `email`, `address`, `phone`, `social_network`, `img`) VALUES
+(46, 'yael', 'linares', 'puto', 50, 'dmorales1@uabc.edu.mx', 'col joyita', '6462230430', 'https://web.facebook.com/Yaeln18', 'users/194420yael.jpg'),
+(62, 'luis', 'cozatl', 'z', 65, 'dmorales1@uabc.edu.mx', 'papeleria', '6462230956', 'https://web.facebook.com/luisalberto.hernandezcozatl/', 'users/170743luis.jpg');
 
 --
 -- Índices para tablas volcadas
@@ -134,6 +152,12 @@ INSERT INTO `users_data` (`user_id`, `first_name`, `last_name`, `password`, `age
 --
 ALTER TABLE `categories`
   ADD PRIMARY KEY (`category_id`);
+
+--
+-- Indices de la tabla `help_support`
+--
+ALTER TABLE `help_support`
+  ADD PRIMARY KEY (`support_id`);
 
 --
 -- Indices de la tabla `products_data`
@@ -164,10 +188,16 @@ ALTER TABLE `categories`
   MODIFY `category_id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `help_support`
+--
+ALTER TABLE `help_support`
+  MODIFY `support_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
 -- AUTO_INCREMENT de la tabla `products_data`
 --
 ALTER TABLE `products_data`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 
 --
 -- AUTO_INCREMENT de la tabla `request_sale`
@@ -179,7 +209,7 @@ ALTER TABLE `request_sale`
 -- AUTO_INCREMENT de la tabla `users_data`
 --
 ALTER TABLE `users_data`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
