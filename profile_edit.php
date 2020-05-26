@@ -1,5 +1,3 @@
-
-
  <?php
     session_start();
  ?>
@@ -11,40 +9,31 @@ include("conexiondb.php");
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>swapmeet</title>
+    <!-- Custom fonts for this template-->
+    <link href="css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>swapmeet</title>
-
-  <!-- Custom fonts for this template-->
-  
- <link href="css/all.min.css" rel="stylesheet" type="text/css">
- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
- <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+   
 </head>
 
 <body id="page-top">
- 
-  
-  <!-- Page Wrapper -->
-    <div id="wrapper">
-      <!-- Content Wrapper -->
-          <div id="content-wrapper" class="d-flex flex-column">
-
-               <!-- Main Content -->
-               <div id="content">
-
-                 <!-- Topbar -->
-             
-              <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
-                <a href="index.php">
-                  <img src="img/Slogo_b.png" style="border-radius: 35px;" >
-                </a>
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+          <a href="index.php">
+            <img src="img/Slogo_b.png" style="border-radius: 35px;" >
+          </a>
             
 
           <!-- Topbar Search -->
@@ -85,18 +74,20 @@ include("conexiondb.php");
             </li>
 
             <!-- boton mis arituclos -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
-              </a>
-              
-            </li>
+           <li class="nav-item dropdown no-arrow mx-1">
+                   <a href="product_register.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+                  </a>
+                                   
+              </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dr" href="#">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ventas</button>
-              </a>
-            </li>
+                   <a href="help_support.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                  </a>
+                                   
+              </li>
+
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
             
@@ -117,6 +108,7 @@ include("conexiondb.php");
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
                         <a class="dropdown-item" href="see_products.php">Mis articulos</a>
+                        <a class="dropdown-item" href="see_sales.php">Mis gestiones</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
@@ -138,8 +130,7 @@ include("conexiondb.php");
             <?php } ?>
           </ul>
 
-        </nav>       
-                    <!-- End of Topbar -->
+        </nav>    <!-- End of Topbar -->
                     <div align="center">
                       <form id="userEdit" class="user">
                         <h1 class="h4 text-gray-900 mb-4">EDITAR PERFIL</h1>
@@ -309,7 +300,8 @@ include("conexiondb.php");
 
                 <!-- Page level custom scripts -->
                 <script src="js/demo/chart-area-demo.js"></script>
-              <script src="js/demo/chart-pie-demo.js"></script>        
+              <script src="js/demo/chart-pie-demo.js"></script>    
+              <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>  
 </body>
 
 </html>
@@ -341,7 +333,15 @@ $('#userEdit').submit(function(e){
         processData: false 
     })
     .done(function(res){   
-        window.location.href="user_profile.php";
+                    Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Se han guardados los cambios',
+  showConfirmButton: false,
+  timer: 5500
+})
+        setTimeout(function(){ window.location.href="user_profile.php"; }, 1500); 
+
     });
 });          
 

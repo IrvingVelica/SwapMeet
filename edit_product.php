@@ -74,12 +74,12 @@ include("conexiondb.php");
             </li>
 
             <!-- boton mis arituclos -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
-              </a>
-              
-            </li>
+           <li class="nav-item dropdown no-arrow mx-1">
+                   <a href="product_register.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+                  </a>
+                                   
+              </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
                    <a href="help_support.php" class="nav-link dropdown-toggle">
@@ -108,6 +108,7 @@ include("conexiondb.php");
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
                         <a class="dropdown-item" href="see_products.php">Mis articulos</a>
+                        <a class="dropdown-item" href="see_sales.php">Mis gestiones</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
@@ -130,7 +131,6 @@ include("conexiondb.php");
           </ul>
 
         </nav>
-
                        <div class="card o-hidden border-0 shadow-lg my-5">
                         <?php
                      $getProductQuery = 'SELECT * FROM products_data WHERE product_id='.$_GET['edit_product'];
@@ -260,6 +260,7 @@ include("conexiondb.php");
                                 <button class="btn btn-primary">Guardar</button>
                          
                                    </form>
+
                                 </div>
                                 <br>
                           </div>
@@ -287,22 +288,21 @@ include("conexiondb.php");
                       <!-- End of Footer -->
             </div>
     </div>
-    
+     
     <!-- End of Content Wrapper -->
 
  
   <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
+
  <!-- Logout Debes iniciar secion para ofrecer articulo-->
 
  
 <!-- Bootstrap core JavaScript-->
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
   <!-- Core plugin JavaScript-->
   <script src="js/jquery.easing.min.js"></script>
@@ -317,6 +317,7 @@ include("conexiondb.php");
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
   
 
 </body>
@@ -326,6 +327,7 @@ include("conexiondb.php");
 
 <script>
       $('#sale_type').change(function(){
+
           $('#change_category').attr('disabled',false); 
           $('#change_description').attr('disabled',false);
           $('#price_rental').attr('disabled',false);  
@@ -353,6 +355,7 @@ include("conexiondb.php");
            $('#time_rental').attr('disabled',true);   
            } 
     });
+           $('#sale_type').change();
 
 
  document.getElementById("file").onchange = function(e) { let reader = new FileReader(); 
@@ -368,6 +371,7 @@ include("conexiondb.php");
 
 $('#productEdit').submit(function(e){
     e.preventDefault();
+
     var formData = new FormData(document.getElementById('productEdit')); 
     $.ajax({
         url: 'edit_product_engine.php', 
@@ -377,8 +381,16 @@ $('#productEdit').submit(function(e){
         contentType: false,
         processData: false 
     })
-    .done(function(res){   
-        window.location.href="see_products.php";
+    .done(function(res){  
+
+       Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Se han guardados los cambios',
+  showConfirmButton: false,
+  timer: 5500
+})
+         setTimeout(function(){ window.location.href="see_products.php"; }, 1500); 
     });
 });          
 

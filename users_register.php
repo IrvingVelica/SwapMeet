@@ -138,7 +138,7 @@
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
 </body>
 
 </html>
@@ -181,10 +181,16 @@ $('#addUser').submit(function(e){
             
             if(parseInt(respuesta) == 1) {
               console.log(respuesta);
-                //window.location.href="direccion";
-                 $('.alert-success').show();
-                 $('.alert-success').fadeOut(5000); 
+                                  Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Usuario registrado...inicie sesion por favor',
+  showConfirmButton: false,
+  timer: 5500
+})
+        setTimeout(function(){ window.location.href="login.html"; }, 3000); 
 
+                
             } 
         });
       }

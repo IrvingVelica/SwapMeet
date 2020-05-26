@@ -1,8 +1,10 @@
+ <?php
+    session_start();
+ ?>
 <?php
 include("conexiondb.php");
- session_start();
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,21 +21,16 @@ include("conexiondb.php");
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-
+   
 </head>
 
 <body id="page-top">
- 
-  
-
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
-      <!-- Main Content -->
-      <div id="content">
-
+        <!-- Main Content -->
+        <div id="content">
         <!-- Topbar -->
-  <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light bg-danger topbar mb-4 static-top shadow">
           <a href="index.php">
             <img src="img/Slogo_b.png" style="border-radius: 35px;" >
           </a>
@@ -77,18 +74,20 @@ include("conexiondb.php");
             </li>
 
             <!-- boton mis arituclos -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
-              </a>
-              
-            </li>
+           <li class="nav-item dropdown no-arrow mx-1">
+                   <a href="product_register.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+                  </a>
+                                   
+              </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dr" href="#">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ventas</button>
-              </a>
-            </li>
+                   <a href="help_support.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                  </a>
+                                   
+              </li>
+
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
             
@@ -109,6 +108,7 @@ include("conexiondb.php");
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
                         <a class="dropdown-item" href="see_products.php">Mis articulos</a>
+                        <a class="dropdown-item" href="see_sales.php">Mis gestiones</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
@@ -131,7 +131,6 @@ include("conexiondb.php");
           </ul>
 
         </nav>
-
    <?php
               $geProductQuery = 'SELECT * FROM products_data WHERE product_id='.$_GET['product_id'];
               $getProduct = mysqli_query($conexion,  $geProductQuery);
@@ -193,9 +192,12 @@ include("conexiondb.php");
                             <p><label id="lbl_precio">Tiempo de renta: <?php echo $rowProduct['time_rental'];?></label></p>
                             <?php }?>
                         </div>
-                        <a rel="nofollow" href="#"> 
+                        <a <?php if($rowProduct['user_id'] != $_SESSION['user_id']){?>
+                            rel="nofollow" href="sale.php?saller_id=<?php echo $rowProduct['user_id'];?>"
+                        <?php } ?>> 
                   	          <button type="button" class="btn btn-secondary btn-sm "  style="border-radius: 25px;">Comprar</button>
                         </a>
+                       
                     </div>
                 </div>  
             </div>
@@ -259,27 +261,7 @@ include("conexiondb.php");
   <!-- End of Page Wrapper -->
 
   <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
- <!-- Logout Debes iniciar secion para ofrecer articulo-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Bienvenido</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Iniciar sesion primero</div>
-        <div class="modal-footer">
-        
-          <a class="btn btn-secondary" href="login.html">Iniciar sesion</a>
-        </div>
-      </div>
-    </div>
-  </div>
+
  
 <!-- Bootstrap core JavaScript-->
   <script src="js/jquery.min.js"></script>
@@ -307,14 +289,5 @@ include("conexiondb.php");
 
 
 <script>
-  function not_session1(){
-    $('.not_session1').show();
-    $('.not_session1').fadeOut(5000); 
 
-  }
-  function not_session2(){
-    $('.not_session2').show();
-    $('.not_session2').fadeOut(5000); 
-  }
-  
 </script>

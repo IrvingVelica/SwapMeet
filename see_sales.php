@@ -131,98 +131,178 @@ include("conexiondb.php");
           </ul>
 
         </nav>
-        <!-- End of Topbar -->
+										<!-- End of Topbar -->
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-          <?php
-              if(!empty($_GET['category'])){
-                $geProductQuery = 'SELECT * FROM products_data WHERE product_category="'.$_GET['category'].'"';
+													<!-- Begin Page Content -->
+
+													<?php
+                     $getProductQuery = 'SELECT * FROM products_data WHERE user_id='.$_SESSION['user_id'];
+                $getProduct = mysqli_query($conexion, $getProductQuery);
+                $Product = mysqli_fetch_assoc($getProduct);
                 
-              }elseif(!empty($_GET['q'])){
-                $geProductQuery = 'SELECT * FROM products_data WHERE name LIKE "%'.$_GET['q'].'%" OR product_category LIKE "%'.$_GET['q'].'%" OR sale_type LIKE "%'.$_GET['q'].'%"';
-              }else{
-                $geProductQuery = "SELECT * FROM products_data";
-              }
-              $getProduct = mysqli_query($conexion,  $geProductQuery);                                     
-            ?>
-  
-          <!-- Content Row -->
-          <div class="row">
-            <?php while ($rowProduct =  mysqli_fetch_assoc($getProduct)) {?>      
-            <div class="col-lg-2 ">
-              <!-- Illustrations -->
-              <div class="card shadow mb-3 text-center">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary"><?php echo $rowProduct['name'];?></h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-2 mb-3" style="width: 25rem;" src="<?php echo $rowProduct['img'];?>" alt="">            
-                  <p><label><?php echo $rowProduct['product_description'];?></label></p>
-                  </div>
-                  <a href="product_details.php?product_id=<?php echo $rowProduct['product_id'];?>" type="button" class="btn btn-secondary btn-sm" style="border-radius 25px;">Detalles</a> 
-                  <br>   
-                  <label><?php echo $rowProduct['sale_type'];?></label>
-                </div>
-                  <br><br>
-              </div>
-            </div>
-            <?php } ?>
-         
-            </div>
-            
+                
+                ?>
+									<div class="container-fluid">
+											<h1 class="h3 mb-2 text-gray-800 text-center">GESTION ARTICULOS</h1>
+										<div class="row">
+											<div class="col-lg-6 ">
+											
 
-          </div>
+												<!-- DataTales Example -->
+												<div class="card shadow mb-4">
+													<div class="card-header py-3 text-center">
+														<h6 class="m-0 font-weight-bold text-primary">Mis Articulos Ofrecidos</h6>
+													</div>
+													<div class="card-body">
+														<div class="table-responsive">
+															<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+																<thead>
+																	<tr>
+																		<th>Nombre</th>
+																		<th>Estatus</th>
+																		<th>Detalles</th>
+																		
+																	</tr>
+																</thead>
+															
+																<tbody>
+																	<tr>
+																		<td>Samsung s3</td>
+																		<td>Intercambio</td>
+																		<td><a href="htt://sitioweb.com/a"><button class="btn btn-secondary" id="bt_edit">Detalles</button></a></td>
+																	</tr>
+																	<tr>
+																		<td>Martillo</td>
+																		<td>Renta</td>
+																		
+																		<td><a href="htt://sitioweb.com/a"><button class="btn btn-secondary" id="bt_edit">Detalles</button></a></td>
+																		
+																	</tr>
+																</tbody>
+															</table>
 
-           <!-- Content Row -->
-        
-          
-        <!-- /.container-fluid -->
 
-      </div>
-    </div>
-      <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-danger">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Swapmeet 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
 
-    </div>
-    <!-- End of Content Wrapper -->
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<!-- DataTales Example -->
+												<div class="card shadow mb-4">
+													<div class="card-header py-3 text-center">
+														<h6 class="m-0 font-weight-bold text-primary">Mis Articulos Adquiridos</h6>
+													</div>
+													<div class="card-body">
+														<div class="table-responsive">
+															<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+																<thead>
+																	<tr>
+																		<th>Nombre</th>
+																		<th>Estatus</th>
+																		<th>Detalles</th>
+																		
+																	</tr>
+																</thead>
+															
+																<tbody>
+																	<tr>
+																		<td>Samsung s3</td>
+																		<td>Intercambio</td>
+																		<td><a href="htt://sitioweb.com/a"><button class="btn btn-secondary" id="bt_edit">Detalles</button></a></td>
+																	</tr>
+																	<tr>
+																		<td>Martillo</td>
+																		<td>Renta</td>
+																		
+																		<td><a href="htt://sitioweb.com/a"><button class="btn btn-secondary" id="bt_edit">Detalles</button></a></td>
+																		
+																	</tr>
+																</tbody>
+															</table>
+
+
+
+
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+												
+												
+									</div>
+									<!-- /.container-fluid -->
+						 </div>
+						 <!-- End of Main Content -->
+						 <br>
+						 <br>
+						 <br>
+						 <br>
+						 <br>
+						
+							<!-- Footer -->
+							<footer class="sticky-footer bg-danger">
+								<div class="container my-auto">
+									<div class="copyright text-center my-auto">
+										<span>08/05/2020© Copyright</span>
+									</div>
+								</div>
+							</footer>
+							<!-- End of Footer -->
+				</div>
+		</div>
+		<!-- End of Content Wrapper -->
 
  
-  <!-- End of Page Wrapper -->
+	<!-- End of Page Wrapper -->
 
-  <!-- Scroll to Top Button-->
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top">
+		<i class="fas fa-angle-up"></i>
+	</a>
 
+	 <!-- modal de eliminar articulo-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">AVISO</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Seguro que desear eliminar este articulo!</div>
+        <div class="modal-footer">
+        
+          <a class="btn btn-danger" href="#">Aceptar</a>
+          <a class="btn btn-secondary" href="#" data-dismiss="modal">Cancelar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.bundle.min.js"></script>
 
-  <!-- Core plugin JavaScript-->
-  <script src="js/jquery.easing.min.js"></script>
+	<!-- Core plugin JavaScript-->
+	<script src="js/jquery.easing.min.js"></script>
 
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="js/Chart.min.js"></script>
-  <script type="text/javascript" src="js/all.min.js"></script>
+	<!-- Page level plugins -->
+	<script src="js/Chart.min.js"></script>
+	<script type="text/javascript" src="js/all.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
-  
+	<!-- Page level custom scripts -->
+	<script src="js/demo/chart-area-demo.js"></script>
+	<script src="js/demo/chart-pie-demo.js"></script>
+	
 
 </body>
 
 </html>
-

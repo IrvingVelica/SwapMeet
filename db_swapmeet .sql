@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-05-2020 a las 05:11:53
+-- Tiempo de generación: 26-05-2020 a las 08:03:24
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -56,7 +56,11 @@ INSERT INTO `help_support` (`support_id`, `user_id`, `support`, `description`, `
 (13, 62, 'Mejor Intercamnio', 'no veo el precio de los articulos', 0, ''),
 (18, 62, '', '', 3, 'si incluyen el precio dare mas estrellas'),
 (24, 62, '', '', 3, 'si incluyen el precio dare mas estrellas'),
-(25, 62, 'Mejor Intercamnio', 'no veo el precio de los articulos', 0, '');
+(25, 62, 'Mejor Intercamnio', 'no veo el precio de los articulos', 0, ''),
+(26, 62, '', '', 0, ''),
+(27, 62, 'Mejor Intercamnio', '', 0, ''),
+(28, 62, '', '', 0, ''),
+(29, 62, 'Mejor Intercamnio', '', 0, '');
 
 -- --------------------------------------------------------
 
@@ -86,35 +90,35 @@ CREATE TABLE `products_data` (
 
 INSERT INTO `products_data` (`product_id`, `user_id`, `name`, `product_description`, `change_description`, `status`, `price_sale`, `price_rental`, `img`, `time_rental`, `sale_type`, `product_category`, `change_category`) VALUES
 (79, 62, 'Balon de futbol americano', 'Solo lo usamos 5 temporadas', '', 'Nuevo', '100', '', 'products/425497pc.jpg', '', 'Venta', 'Herramientas', ''),
-(80, 62, 'Consola xbox', 'Rento consola pirata con 100 juegos', '', 'Usado', '', '100 ', 'products/239975xbox.jpg', '3 dias', 'Renta', 'Electronicos', ''),
-(81, 46, 'Carretilla', 'Carretilla nueva sin usarse', '', 'Usado', '', '40', 'products/261085prro.png', '1 hora', 'Renta', 'Ropa', 'Herramientas'),
-(83, 46, 'Calcetines', 'Calcetin nuevo uan puesta', '', 'Nuevo', '', '100', 'products/913832calcetineswilson.jpg', '1 hora', 'Renta', 'Ropa', '');
+(81, 46, 'Carretilla', 'Carretilla nueva sin usarse', '', 'Usado', '500', '', 'products/79586carretilla.jpg', '', 'Venta', 'Ropa', ''),
+(83, 46, 'Calcetines', 'Calcetin nuevo uan puesta', '', 'Nuevo', '', '40', 'products/913832calcetineswilson.jpg', '1 hora', 'Renta', 'Ropa', '');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `request_saaaaale`
+-- Estructura de tabla para la tabla `sales_data`
 --
 
-CREATE TABLE `request_saaaaale` (
-  `request_id` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
+CREATE TABLE `sales_data` (
+  `sale_id` int(11) NOT NULL,
+  `saller_id` int(11) DEFAULT NULL,
+  `buyer_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
+  `delivery` varchar(50) DEFAULT NULL,
+  `delivery_time` varchar(10) DEFAULT NULL,
+  `type_sale` varchar(20) DEFAULT NULL,
+  `type_delivery` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `request_sale`
+-- Volcado de datos para la tabla `sales_data`
 --
 
-CREATE TABLE `request_sale` (
-  `request_id` int(11) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `user_id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `sales_data` (`sale_id`, `saller_id`, `buyer_id`, `product_id`, `delivery`, `delivery_time`, `type_sale`, `type_delivery`) VALUES
+(1, 62, 46, 81, NULL, '8am', 'Venta', 'Domicilio'),
+(2, 62, 46, 81, 'MacroPLaza', '8am', 'Venta', 'Reunion'),
+(3, 46, 62, 79, NULL, '8am', 'Venta', 'Domicilio'),
+(4, 46, 62, 79, 'Soriana bahia', '8am', 'Venta', 'Reunion');
 
 -- --------------------------------------------------------
 
@@ -141,7 +145,10 @@ CREATE TABLE `users_data` (
 
 INSERT INTO `users_data` (`user_id`, `first_name`, `last_name`, `password`, `age`, `email`, `address`, `phone`, `social_network`, `img`) VALUES
 (46, 'yael', 'linares', 'puto', 50, 'dmorales1@uabc.edu.mx', 'col joyita', '6462230430', 'https://web.facebook.com/Yaeln18', 'users/194420yael.jpg'),
-(62, 'luis', 'cozatl', 'z', 65, 'dmorales1@uabc.edu.mx', 'papeleria', '6462230956', 'https://web.facebook.com/luisalberto.hernandezcozatl/', 'users/170743luis.jpg');
+(62, 'luis', 'cozatl', 'z', 65, 'dmorales1@uabc.edu.mx', 'papeleria', '6462230956', 'https://web.facebook.com/luisalberto.hernandezcozatl/', 'users/170743luis.jpg'),
+(77, 'vvv', 'vvv', 'a', 4, 'dmorales1@uabc.edu.mx', 'qqqq', NULL, NULL, NULL),
+(78, 'vvv', 'vvv', 'e', 4, 'dmorales1@uabc.edu.mx', 'qqqq', NULL, NULL, NULL),
+(79, 'vvv', 'd', 'd', 4, 'dmorales1@uabc.edu.mx', 'c', NULL, NULL, NULL);
 
 --
 -- Índices para tablas volcadas
@@ -166,10 +173,10 @@ ALTER TABLE `products_data`
   ADD PRIMARY KEY (`product_id`);
 
 --
--- Indices de la tabla `request_sale`
+-- Indices de la tabla `sales_data`
 --
-ALTER TABLE `request_sale`
-  ADD PRIMARY KEY (`request_id`);
+ALTER TABLE `sales_data`
+  ADD PRIMARY KEY (`sale_id`);
 
 --
 -- Indices de la tabla `users_data`
@@ -191,25 +198,25 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT de la tabla `help_support`
 --
 ALTER TABLE `help_support`
-  MODIFY `support_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `support_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `products_data`
 --
 ALTER TABLE `products_data`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
 
 --
--- AUTO_INCREMENT de la tabla `request_sale`
+-- AUTO_INCREMENT de la tabla `sales_data`
 --
-ALTER TABLE `request_sale`
-  MODIFY `request_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `sales_data`
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `users_data`
 --
 ALTER TABLE `users_data`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

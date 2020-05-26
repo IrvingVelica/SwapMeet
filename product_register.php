@@ -311,6 +311,7 @@ include("conexiondb.php");
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
   
 
 </body>
@@ -368,8 +369,13 @@ $('#addProduct').submit(function(e){
     })
     .done(function(res){   
 
-      $('.alert-success').show();
-      $('.alert-success').fadeOut(5000); 
+     Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Se ha registrado el producto',
+  showConfirmButton: false,
+  timer: 5500
+})
       
     });
 });          

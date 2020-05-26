@@ -24,6 +24,7 @@ include("conexiondb.php");
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    
    
 </head>
 
@@ -57,7 +58,7 @@ include("conexiondb.php");
           
 
             <!-- boton categorias -->
-             <li class="nav-item dropdown no-arrow mx-1">
+                    <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Categorias</button>
                 <!-- Counter - Alerts -->
@@ -77,23 +78,19 @@ include("conexiondb.php");
             </li>
 
             <!-- boton mis arituclos -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
-              </a>
-              
-            </li>
+           <li class="nav-item dropdown no-arrow mx-1">
+                   <a href="product_register.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+                  </a>
+                                   
+              </li>
             <!-- boton mis ofrecer -->
-                  <li class="nav-item dropdown no-arrow mx-1">
-                                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                          <a class="dropdown-item" href="help_support.html">Sugerencias</a>
-                                          <a class="dropdown-item" href="product_register.html">Soporte</a>
-                                            
-                                    </div>
-                               </li>
+              <li class="nav-item dropdown no-arrow mx-1">
+                   <a href="help_support.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                  </a>
+                                   
+              </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
             <?php 
@@ -115,6 +112,7 @@ include("conexiondb.php");
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
                         <a class="dropdown-item" href="see_products.php">Mis articulos</a>
+                        <a class="dropdown-item" href="see_sales.php">Mis gestiones</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
@@ -254,7 +252,7 @@ include("conexiondb.php");
 	<!-- Bootstrap core JavaScript-->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.bundle.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 	<!-- Core plugin JavaScript-->
 	<script src="js/jquery.easing.min.js"></script>
 
@@ -304,6 +302,12 @@ include("conexiondb.php");
     		};
     		$.post('help_support_engine.php',objSupport,function(respuesta){
     			//alrert('gracias por enviarnos tu sugerencia');
+ 				 swal({
+                title: "Usuario Eliminado!",
+                icon: "success",
+                button: "Continuar",
+            })
+
     		})
 			});
 

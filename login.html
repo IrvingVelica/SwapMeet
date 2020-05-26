@@ -114,10 +114,14 @@
   <!-- Page level plugins -->
   <script src="js/Chart.min.js"></script>
   <script type="text/javascript" src="js/all.min.js"></script>
-
+<
+<!-- Optional: include a polyfill for ES6 Promises for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
 
 </body>
 
@@ -143,14 +147,28 @@ $('#userLog').submit(function(e){
 
         $.post('users_engine.php', objUserLog, function(respuesta) { 
             if(respuesta==2) {
-                $('.not_found').show();//NO SE ENCONTRO USUARIO
-                 $('.not_found').fadeOut(5000);
-                 
+                                Swal.fire({
+  position: 'left-end',
+  icon: 'error',
+  title: 'usuario no encontrado!!!',
+  showConfirmButton: false,
+  timer: 1500
+})
+
               } else{
-                      //respuesta = JSON.parse(respuesta);
+                respuesta = JSON.parse(respuesta);
+                Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: respuesta.first_name+'... haz iniciado sesion correctamente',
+  showConfirmButton: false,
+  timer: 5500
+})
+
+                 
                       //document.cookie = "user_id="+respuesta.user_id+"; max-age=3600; path=/";
                      // sessionStorage.setItem("user_id",respuesta.user_id);
-                      window.location.href="index.php";         
+                     setTimeout(function(){ window.location.href="index.php"; }, 1500);         
               }
         });
 

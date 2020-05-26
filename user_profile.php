@@ -1,4 +1,4 @@
- <?php
+  <?php
     session_start();
  ?>
 <?php
@@ -74,12 +74,12 @@ include("conexiondb.php");
             </li>
 
             <!-- boton mis arituclos -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
-              </a>
-              
-            </li>
+           <li class="nav-item dropdown no-arrow mx-1">
+                   <a href="product_register.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+                  </a>
+                                   
+              </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
                    <a href="help_support.php" class="nav-link dropdown-toggle">
@@ -108,6 +108,7 @@ include("conexiondb.php");
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
                         <a class="dropdown-item" href="see_products.php">Mis articulos</a>
+                        <a class="dropdown-item" href="see_sales.php">Mis gestiones</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>

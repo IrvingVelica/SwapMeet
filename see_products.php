@@ -1,4 +1,4 @@
- <?php
+  <?php
     session_start();
  ?>
 <?php
@@ -74,12 +74,12 @@ include("conexiondb.php");
             </li>
 
             <!-- boton mis arituclos -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
-              </a>
-              
-            </li>
+           <li class="nav-item dropdown no-arrow mx-1">
+                   <a href="product_register.php" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+                  </a>
+                                   
+              </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
                    <a href="help_support.php" class="nav-link dropdown-toggle">
@@ -108,6 +108,7 @@ include("conexiondb.php");
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="user_profile.php">Visita tu perfil</a>
                         <a class="dropdown-item" href="see_products.php">Mis articulos</a>
+                        <a class="dropdown-item" href="see_sales.php">Mis gestiones</a>
                         <a class="dropdown-item" href="product_register.php">Vende o cambia un articulo</a>
                         <a class="dropdown-item" href="cerrarsesion.php">Cerrar sesión</a>
                     </div>
@@ -210,7 +211,7 @@ include("conexiondb.php");
 							<footer class="sticky-footer bg-danger">
 								<div class="container my-auto">
 									<div class="copyright text-center my-auto">
-										<span>08/05/2020© Copyright</span>
+										<span>Swapmeet 2020</span>
 									</div>
 								</div>
 							</footer>
@@ -218,17 +219,7 @@ include("conexiondb.php");
 				</div>
 		</div>
 		<!-- End of Content Wrapper -->
-
- 
-	<!-- End of Page Wrapper -->
-
-	<!-- Scroll to Top Button-->
-	<a class="scroll-to-top rounded" href="#page-top">
-		<i class="fas fa-angle-up"></i>
-	</a>
-
-	 <!-- modal de eliminar articulo-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -247,6 +238,10 @@ include("conexiondb.php");
     </div>
   </div>
  
+ 
+	<!-- End of Page Wrapper -->
+
+
 
 	<!-- Bootstrap core JavaScript-->
 	<script src="js/jquery.min.js"></script>
@@ -265,6 +260,7 @@ include("conexiondb.php");
 	<!-- Page level custom scripts -->
 	<script src="js/demo/chart-area-demo.js"></script>
 	<script src="js/demo/chart-pie-demo.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>  
 	
 
 </body>
@@ -288,8 +284,17 @@ include("conexiondb.php");
             };
 
         $.post('products_engine.php', objDelUser, function(respuesta) {
-                      //respuesta = JSON.parse(respuesta);                      
-                      window.location.href="see_products.php";            
+                      //respuesta = JSON.parse(respuesta); 
+                                          Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Se ha removido el articulo',
+  showConfirmButton: false,
+  timer: 5500
+})
+        setTimeout(function(){ window.location.href="see_products.php"; }, 1500); 
+                     
+                                  
         });
 
 });    
