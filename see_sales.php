@@ -136,10 +136,11 @@ include("conexiondb.php");
 													<!-- Begin Page Content -->
 
 													<?php
-                     $getProductQuery = 'SELECT * FROM products_data WHERE user_id='.$_SESSION['user_id'];
+                     $getProductQuery = 'SELECT sd.type_sale, pd.name FROM sales_data AS sd, products_data AS pd  WHERE sd.product_id=pd.product_id AND sd.saller_id='.$_SESSION['user_id'];
                 $getProduct = mysqli_query($conexion, $getProductQuery);
-                $Product = mysqli_fetch_assoc($getProduct);
-                
+
+                $getProductQuery1 = 'SELECT sd.type_sale, pd.name FROM sales_data AS sd, products_data AS pd  WHERE sd.product_id=pd.product_id AND sd.buyer_id='.$_SESSION['user_id'];
+                $getProduct1 = mysqli_query($conexion, $getProductQuery1);
                 
                 ?>
 									<div class="container-fluid">
@@ -166,18 +167,15 @@ include("conexiondb.php");
 																</thead>
 															
 																<tbody>
+																	<?php while($Product = mysqli_fetch_assoc($getProduct)){?>
 																	<tr>
-																		<td>Samsung s3</td>
-																		<td>Intercambio</td>
+
+																		<td><?php echo $Product['name'];?></td>
+																		<td><?php echo $Product['type_sale'];?></td>
 																		<td><a href="htt://sitioweb.com/a"><button class="btn btn-secondary" id="bt_edit">Detalles</button></a></td>
 																	</tr>
-																	<tr>
-																		<td>Martillo</td>
-																		<td>Renta</td>
-																		
-																		<td><a href="htt://sitioweb.com/a"><button class="btn btn-secondary" id="bt_edit">Detalles</button></a></td>
-																		
-																	</tr>
+																
+																<?php } ?>
 																</tbody>
 															</table>
 
@@ -207,18 +205,13 @@ include("conexiondb.php");
 																</thead>
 															
 																<tbody>
+																	<?php while($Product1 = mysqli_fetch_assoc($getProduct1)){?>
 																	<tr>
-																		<td>Samsung s3</td>
-																		<td>Intercambio</td>
+																		<td><?php echo $Product1['name'];?></td>
+																		<td><?php echo $Product1['type_sale'];?></td>
 																		<td><a href="htt://sitioweb.com/a"><button class="btn btn-secondary" id="bt_edit">Detalles</button></a></td>
 																	</tr>
-																	<tr>
-																		<td>Martillo</td>
-																		<td>Renta</td>
-																		
-																		<td><a href="htt://sitioweb.com/a"><button class="btn btn-secondary" id="bt_edit">Detalles</button></a></td>
-																		
-																	</tr>
+															<?php } ?>
 																</tbody>
 															</table>
 

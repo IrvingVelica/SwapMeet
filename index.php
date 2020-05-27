@@ -75,9 +75,15 @@ include("conexiondb.php");
 
             <!-- boton mis arituclos -->
            <li class="nav-item dropdown no-arrow mx-1">
+            <?php if(!isset($_SESSION['user_id'])){ ?>
+              <a href="#" class="nav-link dropdown-toggle">
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+                  </a>
+              <?php }else{ ?>
                    <a href="product_register.php" class="nav-link dropdown-toggle">
                       <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
                   </a>
+                <?php } ?>
                                    
               </li>
             <!-- boton mis ofrecer -->

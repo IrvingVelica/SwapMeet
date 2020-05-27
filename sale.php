@@ -304,6 +304,7 @@ include("conexiondb.php");
   <!-- Page level custom scripts -->
   <script src="js/demo/chart-area-demo.js"></script>
   <script src="js/demo/chart-pie-demo.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script> 
   
 
 </body>
@@ -352,6 +353,15 @@ include("conexiondb.php");
 
 
           $.post('sale_engine.php', objSale, function(respuesta) {
+             Swal.fire({
+  position: 'top-end',
+  icon: 'success',
+  title: 'Se ha enviado tu oferta......espera respuesta del vendedor ',
+  showConfirmButton: false,
+  timer: 5500
+})
+
+         setTimeout(function(){ window.location.href="see_sales.php"; }, 6500); 
             
         });
 
