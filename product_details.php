@@ -25,6 +25,8 @@ include("conexiondb.php");
 </head>
 
 <body id="page-top">
+  <!-- Page Wrapper -->
+    <div id="wrapper">
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
@@ -56,7 +58,7 @@ include("conexiondb.php");
             <!-- boton categorias -->
              <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Categorias</button>
+                <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px;  opacity: 0.5;">Categorias</button>
                 <!-- Counter - Alerts -->
                
               </a>
@@ -76,14 +78,14 @@ include("conexiondb.php");
             <!-- boton mis arituclos -->
            <li class="nav-item dropdown no-arrow mx-1">
                    <a href="product_register.php" class="nav-link dropdown-toggle">
-                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px;  opacity: 0.5;">Ofrecer</button>
                   </a>
                                    
               </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
                    <a href="help_support.php" class="nav-link dropdown-toggle">
-                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px;  opacity: 0.5;">Ayuda</button>
                   </a>
                                    
               </li>
@@ -192,9 +194,11 @@ include("conexiondb.php");
                             <p><label id="lbl_precio">Tiempo de renta: <?php echo $rowProduct['time_rental'];?></label></p>
                             <?php }?>
                         </div>
+                        <?php if(isset($_SESSION['user_id'])) {?>
                         <a <?php if($rowProduct['user_id'] != $_SESSION['user_id']){?>
                             rel="nofollow" href="sale.php?saller_id=<?php echo $rowProduct['user_id'];?>"
                         <?php } ?>> 
+                        <?php } ?>
                   	          <button type="button" class="btn btn-secondary btn-sm "  style="border-radius: 25px;">Comprar</button>
                         </a>
                        
@@ -241,14 +245,18 @@ include("conexiondb.php");
 
       
     </div>
+    <br><br><br><br>
+       </div>
+          </div>
 
       <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-danger">
+        <!-- Footer -->
+      <footer class="sticky-footer bg-danger" style="position: absolute;
+  bottom: 0;width: 100%;">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Swepmeet2020</span>
+            <span>Swapmeet 2020</span>
           </div>
         </div>
       </footer>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-05-2020 a las 08:03:24
+-- Tiempo de generación: 28-05-2020 a las 04:09:10
 -- Versión del servidor: 10.4.8-MariaDB
 -- Versión de PHP: 7.3.11
 
@@ -145,7 +145,7 @@ CREATE TABLE `users_data` (
 
 INSERT INTO `users_data` (`user_id`, `first_name`, `last_name`, `password`, `age`, `email`, `address`, `phone`, `social_network`, `img`) VALUES
 (46, 'yael', 'linares', 'puto', 50, 'dmorales1@uabc.edu.mx', 'col joyita', '6462230430', 'https://web.facebook.com/Yaeln18', 'users/194420yael.jpg'),
-(62, 'luis', 'cozatl', 'z', 65, 'dmorales1@uabc.edu.mx', 'papeleria', '6462230956', 'https://web.facebook.com/luisalberto.hernandezcozatl/', 'users/170743luis.jpg'),
+(62, 'luis', 'cozatl', 'z', 69, 'dmorales1@uabc.edu.mx', 'papeleria', '646223095a', 'https://web.facebook.com/luisalberto.hernandezcozatl/', 'users/364646no.jpg'),
 (77, 'vvv', 'vvv', 'a', 4, 'dmorales1@uabc.edu.mx', 'qqqq', NULL, NULL, NULL),
 (78, 'vvv', 'vvv', 'e', 4, 'dmorales1@uabc.edu.mx', 'qqqq', NULL, NULL, NULL),
 (79, 'vvv', 'd', 'd', 4, 'dmorales1@uabc.edu.mx', 'c', NULL, NULL, NULL);
@@ -210,7 +210,7 @@ ALTER TABLE `products_data`
 -- AUTO_INCREMENT de la tabla `sales_data`
 --
 ALTER TABLE `sales_data`
-  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `sale_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `users_data`

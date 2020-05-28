@@ -25,6 +25,8 @@ include("conexiondb.php");
 </head>
 
 <body id="page-top">
+  <!-- Page Wrapper -->
+    <div id="wrapper">
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
@@ -56,7 +58,7 @@ include("conexiondb.php");
             <!-- boton categorias -->
              <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Categorias</button>
+                <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px;  opacity: 0.5;">Categorias</button>
                 <!-- Counter - Alerts -->
                
               </a>
@@ -76,14 +78,14 @@ include("conexiondb.php");
             <!-- boton mis arituclos -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" data-toggle="modal" data-target="#logoutModal">
-               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ofrecer</button>
+               <button type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px;  opacity: 0.5;">Ofrecer</button>
               </a>
               
             </li>
             <!-- boton mis ofrecer -->
               <li class="nav-item dropdown no-arrow mx-1">
                    <a href="help_support.php" class="nav-link dropdown-toggle">
-                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px">Ayuda</button>
+                      <button  type="button" class="btn btn-secondary btn-sm" style="border-radius: 25px;width : 150px; height: 50px;  opacity: 0.5;">Ayuda</button>
                   </a>
                                    
               </li>
@@ -98,10 +100,12 @@ include("conexiondb.php");
               ?>
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
+                  
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                             <label><?php echo $user['first_name']." ".$user['last_name'];?></label>
                         </span>
+
                         <img class="img-profile rounded-circle" src="img/user.jpg">
                     </a>
                     <!-- Dropdown - User Information -->
@@ -268,11 +272,12 @@ include("conexiondb.php");
         <!-- /.container-fluid -->
       
     </div>
-
+</div>
       <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-danger">
+     <!-- Footer -->
+      <footer class="sticky-footer bg-danger" style="position: absolute;
+  bottom: 0;width: 100%;">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Swapmeet 2020</span>

@@ -111,8 +111,9 @@
 
   <br>
   <br>
-<!-- Footer -->
-      <footer class="sticky-footer bg-danger">
+  <!-- Footer -->
+      <footer class="sticky-footer bg-danger" style="position: absolute;
+  bottom: 0;width: 100%;">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
             <span>Swapmeet 2020</span>
